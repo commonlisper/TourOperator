@@ -164,6 +164,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412181753427_AuthUpdate.cs" />
+    <Compile Include="Migrations\201412181753427_AuthUpdate.Designer.cs">
+      <DependentUpon>201412181753427_AuthUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -242,6 +247,11 @@
       <Project>{5dd208ee-abdf-4df9-a1dc-317633ec5150}</Project>
       <Name>TourOperator.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412181753427_AuthUpdate.resx">
+      <DependentUpon>201412181753427_AuthUpdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
