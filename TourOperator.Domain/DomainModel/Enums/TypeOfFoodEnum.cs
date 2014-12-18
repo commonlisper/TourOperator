@@ -1,4 +1,4 @@
-﻿namespace TourOperator.Domain.DomainModel.Enums
+﻿namespace TourOperator.Domain.Data.DomainModel.Enums
 {
     public enum TypeOfFoodEnum
     {

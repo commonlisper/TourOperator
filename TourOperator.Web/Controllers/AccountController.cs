@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TourOperator.Domain.Data.DomainModel.AuthModel;
 using TourOperator.Web.Models;
 
 namespace TourOperator.Web.Controllers

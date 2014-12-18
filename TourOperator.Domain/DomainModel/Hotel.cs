@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourOperator.Domain.DomainModel.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using TourOperator.Domain.Data.DomainModel.Enums;
 
-namespace TourOperator.Domain.DomainModel
+namespace TourOperator.Domain.Data.DomainModel
 {
     public class Hotel
     {

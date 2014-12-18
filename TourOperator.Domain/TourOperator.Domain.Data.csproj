@@ -7,8 +7,8 @@
     <ProjectGuid>{5DD208EE-ABDF-4DF9-A1DC-317633EC5150}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TourOperator.Domain</RootNamespace>
-    <AssemblyName>TourOperator.Domain</AssemblyName>
+    <RootNamespace>TourOperator.Domain.Data</RootNamespace>
+    <AssemblyName>TourOperator.Domain.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,17 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModelContext.cs" />
+    <Compile Include="DomainModel\AuthModel\IdentityModels.cs" />
     <Compile Include="DomainModel\Hotel.cs" />
     <Compile Include="DomainModel\Country.cs" />
     <Compile Include="DomainModel\HealthResort.cs" />
     <Compile Include="DomainModel\Tour.cs" />
     <Compile Include="DomainModel\Enums\TypeOfFoodEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

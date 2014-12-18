@@ -1,3 +1,6 @@
+using TourOperator.Domain.Data.DomainModel;
+using TourOperator.Domain.DataAccessLayer;
+
 namespace TourOperator.Web.Migrations
 {
     using System;
@@ -5,15 +8,15 @@ namespace TourOperator.Web.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TourOperator.Web.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DomainDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = false;            
         }
 
-        protected override void Seed(TourOperator.Web.Models.ApplicationDbContext context)
+        protected override void Seed(DomainDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -27,6 +30,15 @@ namespace TourOperator.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //            
+
+//            context.Countries.AddOrUpdate(c => c.Name,
+//                new Country { Name = "Египет" },
+//                new Country { Name = "Андорра" },
+//                new Country { Name = "Греция" },
+//                new Country { Name = "Турция" },
+//                new Country { Name = "Австрия" });
+//
+//            context.SaveChanges();
         }
     }
 }
