@@ -4,7 +4,7 @@ namespace TourOperator.Domain
     using System.Data.Entity;
     using System.Linq;
 
-    public class DomainModel : DbContext
+    public class DomainModelContext : DbContext
     {
         // Your context has been configured to use a 'DomainModel' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -12,7 +12,7 @@ namespace TourOperator.Domain
         // 
         // If you wish to target a different database and/or database provider, modify the 'DomainModel' 
         // connection string in the application configuration file.
-        public DomainModel()
+        public DomainModelContext()
             : base("name=DomainModel")
         {
         }
