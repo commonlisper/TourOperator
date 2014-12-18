@@ -165,15 +165,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412181753427_AuthUpdate.cs" />
-    <Compile Include="Migrations\201412181753427_AuthUpdate.Designer.cs">
-      <DependentUpon>201412181753427_AuthUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412181802010_CreateCountriesToursHealthResortsHotelsInDb.cs" />
-    <Compile Include="Migrations\201412181802010_CreateCountriesToursHealthResortsHotelsInDb.Designer.cs">
-      <DependentUpon>201412181802010_CreateCountriesToursHealthResortsHotelsInDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -245,14 +236,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412181753427_AuthUpdate.resx">
-      <DependentUpon>201412181753427_AuthUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412181802010_CreateCountriesToursHealthResortsHotelsInDb.resx">
-      <DependentUpon>201412181802010_CreateCountriesToursHealthResortsHotelsInDb.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TourOperator.Domain.DataAccessLayer\TourOperator.Domain.DataAccessLayer.csproj">
