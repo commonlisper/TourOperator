@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TourOperator.Domain.DomainModel.Enums;
 
 namespace TourOperator.Domain.DomainModel
 {
@@ -11,12 +12,16 @@ namespace TourOperator.Domain.DomainModel
     {
         public int Id { get; set; }
         
+        [Required]
         [MaxLength(200)]
         public string Name { get; set; }
 
-        public int Category { get; set; }
+        public int? Category { get; set; }
         
-        [MaxLength(2)]
-        public string TypeOfFood { get; set; }
+        [Required]
+        public TypeOfFoodEnum TypeOfFood { get; set; }
+
+        [Timestamp]
+        public byte[] TimestampBytes { get; set; }
     }
 }

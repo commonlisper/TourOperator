@@ -1,3 +1,5 @@
+using TourOperator.Domain.DomainModel;
+
 namespace TourOperator.Domain
 {
     using System;
@@ -21,6 +23,10 @@ namespace TourOperator.Domain
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Tour> Tours { get; set; }
+        public virtual DbSet<HealthResort> HealthResorts { get; set; }
+        public virtual DbSet<Hotel> Hotels { get; set; }
     }
 
     //public class MyEntity

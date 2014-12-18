@@ -11,7 +11,11 @@ namespace TourOperator.Domain.DomainModel
     {
         public int Id { get; set; }
         
+        [Required]
         [MaxLength(200)]
         public string Name { get; set; }
+
+        [Timestamp]
+        public byte[] TimestampBytes { get; set; }
     }
 }

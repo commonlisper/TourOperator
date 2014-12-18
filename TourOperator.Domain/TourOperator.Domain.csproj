@@ -53,6 +53,7 @@
     <Compile Include="DomainModel\Country.cs" />
     <Compile Include="DomainModel\HealthResort.cs" />
     <Compile Include="DomainModel\Tour.cs" />
+    <Compile Include="DomainModel\Enums\TypeOfFoodEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
