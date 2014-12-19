@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,13 +21,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LightTour", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("LightTour", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav">                    
+                    <li>@Html.ActionLink("Страны", "Countries", "Admin")</li>
+                    <li>@Html.ActionLink("Туры", "Tours", "Admin")</li>
+                    <li>@Html.ActionLink("Курорты", "HealthResorts", "Admin")</li>
+                    <li>@Html.ActionLink("Отели", "Hotels", "Admin")</li>                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -42,3 +47,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
