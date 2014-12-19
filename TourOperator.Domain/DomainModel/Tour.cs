@@ -11,5 +11,8 @@ namespace TourOperator.Domain.Data.DomainModel
         public DateTime? StartedOn { get; set; }
         public DateTime? EndedOn { get; set; }
         public byte[] TimestampBytes { get; set; }
+
+        public Country Country { get; set; }
+        public HealthResort HealthResort { get; set; }
     }
 }

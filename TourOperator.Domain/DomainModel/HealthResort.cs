@@ -8,5 +8,7 @@ namespace TourOperator.Domain.Data.DomainModel
         public Guid Id { get; set; }
         public string Name { get; set; }
         public byte[] TimestampBytes { get; set; }
+      
+        public Hotel Hotel { get; set; }
     }
 }
