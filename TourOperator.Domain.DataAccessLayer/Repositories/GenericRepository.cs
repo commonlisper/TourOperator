@@ -18,7 +18,9 @@ namespace TourOperator.Domain.DataAccessLayer.Repositories
             _context = context;
         }
 
-        public IEnumerable<TEntiry> Get(Expression<Func<TEntiry, bool>> filter = null, Func<IQueryable<TEntiry>, IOrderedQueryable<TEntiry>> orderBy = null, string includeProperties = "")
+        public IEnumerable<TEntiry> Get(Expression<Func<TEntiry, bool>> filter = null, 
+            Func<IQueryable<TEntiry>, IOrderedQueryable<TEntiry>> orderBy = null, 
+            string includeProperties = "")
         {
             throw new NotImplementedException();
         }
