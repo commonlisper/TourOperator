@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using TourOperator.Domain.DataAccessLayer;
+﻿using System.Data.Entity;
+using TourOperator.Domain.DataAccessLayer.Configurations.Context;
 
 namespace TourOperator.Web
 {
@@ -12,7 +8,7 @@ namespace TourOperator.Web
         public void ConfigureDatabase()
         {
             // TODO: change in production!
-            Database.SetInitializer(new DropCreateDatabaseAlways<DomainDbContext>());
+            Database.SetInitializer(new ContexInitializerDropAlways());
         }
     }
 }

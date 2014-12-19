@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TourOperator.Domain.DataAccessLayer;
 
 namespace TourOperator.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DomainDbContext _dbContext = new DomainDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            return View(_dbContext.Countries.ToList());
         }
 
         public ActionResult About()

@@ -2,6 +2,7 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TourOperator.Domain.Data.DomainModel;
 using TourOperator.Domain.Data.DomainModel.AuthModel;
+using TourOperator.Domain.DataAccessLayer.Configurations.Entities;
 
 namespace TourOperator.Domain.DataAccessLayer
 {
@@ -15,6 +16,16 @@ namespace TourOperator.Domain.DataAccessLayer
         public static DomainDbContext Create()
         {
             return new DomainDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new CountryConfiguration());
+            modelBuilder.Configurations.Add(new HealthResortConfiguration());
+            modelBuilder.Configurations.Add(new HotelConfiguration());
+            modelBuilder.Configurations.Add(new TourConfiguration());
         }
 
         public virtual DbSet<Country> Countries { get; set; }
