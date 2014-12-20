@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,11 +17,13 @@ namespace TourOperator.Web.Controllers
         private readonly IGenericRepository<Country> _countryRepository =
             new GenericRepository<Country>(new DomainDbContext());
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult Countries()
         {
             return View(_countryRepository.Get(includeProperties: "Tours"));
@@ -39,6 +42,18 @@ namespace TourOperator.Web.Controllers
         public ActionResult Hotels()
         {
             throw new NotImplementedException();
+        }
+
+        public ActionResult EditCountry(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public ActionResult RemoveCountry(Guid id)
+        {
+            ModelState.AddModelError("", new FileNotFoundException("FAIL!"));
+            return RedirectToAction("Countries");
         }
     }
 }

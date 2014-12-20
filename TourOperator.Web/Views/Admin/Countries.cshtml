@@ -7,21 +7,31 @@
 
 <h2>Countries</h2>
 
-<table class="table table-bordered">
+@if (!ViewData.ModelState.IsValid)
+{
+    <p class="text-error">Ошибки</p>
+    <p class="text-warning">@Html.ValidationSummary()</p>
+}
+
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>#</th>
             <th>Название</th>
             <th>Туры</th>
+            <th>Команда</th>            
         </tr>
     </thead>
     <tbody>
-    @foreach (var country in Model)
-    {
-        <tr>
-            <td>@country.Id</td>
-            <td>@country.</td>
-        </tr>
-    }
+        @foreach (var country in Model)
+        {
+            <tr>
+                <td>@country.Name</td>
+                <td>@country.Tours.Count</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("EditCountry", "Admin", new { id = @country.Id })">Редактировать</a>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @country.Id })">Удалить</a>
+                </td>                
+            </tr>
+        }
     </tbody>
 </table>
