@@ -11,7 +11,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
     public class CountryConfiguration : EntityTypeConfiguration<Country>
     {
         public CountryConfiguration()
-        {
+        {         
             Property(c => c.Name).IsRequired();
             Property(c => c.TimestampBytes).IsConcurrencyToken(true);
         }

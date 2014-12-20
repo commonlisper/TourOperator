@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TourOperator.Domain.Data.DomainModel.Tour>
+
+@{
+    ViewBag.Title = "Туры";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Туры</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Количество ночей</th>
+            <th>Цена</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tour in Model)
+        {
+            <tr>
+                <td>@tour.Id</td>
+                <td>@tour.Nights</td>
+                <td>@tour.Price.ToString("c")</td>
+                <td>@tour.StartedOn ?? @string.Empty</td>
+                <td>@tour.EndedOn ?? @string.Empty</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("EditTour", "Admin", new { id = @tour.Id })">Редактировать</a>
+                    @if (tour.Country != null)
+                    {
+                        <a class="btn btn-danger disabled" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -15,6 +15,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
             {
                 new Tour
                 {
+                    Id = Guid.NewGuid(),
                     Price = 800.00m,
                     StartedOn = DateTime.Now,
                     EndedOn = DateTime.Now.AddMonths(1),
@@ -22,6 +23,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 },
                 new Tour
                 {
+                    Id = Guid.NewGuid(),
                     Price = 650.00m,
                     StartedOn = DateTime.Now.AddDays(10),
                     EndedOn = DateTime.Now.AddMonths(2),
@@ -29,6 +31,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 },
                 new Tour
                 {
+                    Id = Guid.NewGuid(),
                     Price = 350m,
                     StartedOn = DateTime.Now.AddDays(5),
                     EndedOn = DateTime.Now.AddDays(5),
@@ -40,14 +43,17 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
             {
                 new Country
                 {
+                    Id = Guid.NewGuid(),
                     Name = "Австрия"
                 },
                 new Country
                 {
+                    Id = Guid.NewGuid(),
                     Name = "Греция"
                 },
                 new Country
                 {
+                    Id = Guid.NewGuid(),
                     Name = "Турция"
                 }
             };
@@ -56,7 +62,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
             countries[1].Tours.Add(tours[1]);
             countries[2].Tours.Add(tours[2]);
 
-            context.Countries.AddRange(countries);
+            context.Countries.AddRange(countries);            
             context.SaveChanges();            
         }
     }
