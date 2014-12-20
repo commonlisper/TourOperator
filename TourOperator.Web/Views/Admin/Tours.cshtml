@@ -28,14 +28,7 @@
                 <td>@tour.EndedOn ?? @string.Empty</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditTour", "Admin", new { id = @tour.Id })">Редактировать</a>
-                    @if (tour.Country != null)
-                    {
-                        <a class="btn btn-danger disabled" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
-                    }
+                    <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
                 </td>
             </tr>
         }

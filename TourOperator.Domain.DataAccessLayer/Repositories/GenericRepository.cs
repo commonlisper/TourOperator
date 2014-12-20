@@ -54,7 +54,8 @@ namespace TourOperator.Domain.DataAccessLayer.Repositories
 
         public void Delete(object id)
         {
-            _dbSet.Remove(Find(id));
+            TEntity entity = Find(id);
+            _dbSet.Remove(entity);
             _context.SaveChanges();
         }
 

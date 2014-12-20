@@ -55,8 +55,12 @@ namespace TourOperator.Web.Controllers
 
         [HttpGet]
         public ActionResult RemoveCountry(Guid id)
-        {
-            ModelState.AddModelError("", new FileNotFoundException("FAIL!"));
+        {           
+            if (ModelState.IsValid)
+            {
+                _countryRepository.Delete(id);                
+            }
+
             return RedirectToAction("Countries");
         }
 
