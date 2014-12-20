@@ -1,6 +1,27 @@
-﻿@{
-    ViewBag.Title = "Countries";
+﻿@model IEnumerable<TourOperator.Domain.Data.DomainModel.Country>
+
+@{
+    ViewBag.Title = "Страны";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Countries</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Туры</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var country in Model)
+    {
+        <tr>
+            <td>@country.Id</td>
+            <td>@country.</td>
+        </tr>
+    }
+    </tbody>
+</table>

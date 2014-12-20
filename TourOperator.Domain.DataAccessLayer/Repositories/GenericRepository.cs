@@ -9,45 +9,66 @@ using TourOperator.Domain.DataAccessLayer.Abstract;
 
 namespace TourOperator.Domain.DataAccessLayer.Repositories
 {
-    public class GenericRepository<TEntiry> : IRepository<TEntiry>
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(DbContext context)
         {
             _context = context;
+            _dbSet = _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntiry> Get(Expression<Func<TEntiry, bool>> filter = null, 
-            Func<IQueryable<TEntiry>, IOrderedQueryable<TEntiry>> orderBy = null, 
-            string includeProperties = "")
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> entitySet = _dbSet;
+
+            if (where != null)
+            {
+                entitySet = entitySet.Where(where);
+            }
+
+            if (includeProperties != null)
+            {
+                entitySet =
+                    includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Aggregate(entitySet, (current, property) => current.Include(property));
+            }
+
+            return orderBy != null ? orderBy(entitySet).ToList() : entitySet.ToList();
         }
 
-        public TEntiry Find(object id)
+        public TEntity Find(object id)
         {
-            throw new NotImplementedException();
+            return _dbSet.Find(id);
         }
 
-        public void Insert(TEntiry entity)
+        public void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(object id)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(Find(id));
+            _context.SaveChanges();
         }
 
-        public void Delete(TEntiry entity)
+        public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
-        public void Update(TEntiry entity)
+        public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
