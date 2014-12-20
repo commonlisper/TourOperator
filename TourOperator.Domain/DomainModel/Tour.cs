@@ -7,7 +7,7 @@ namespace TourOperator.Domain.Data.DomainModel
     {
         public Guid Id { get; set; }
         public decimal Price { get; set; }
-        public uint Nights { get; set; }
+        public int Nights { get; set; }
         public DateTime? StartedOn { get; set; }
         public DateTime? EndedOn { get; set; }
         public byte[] TimestampBytes { get; set; }
