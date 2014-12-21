@@ -7,9 +7,17 @@
 
 <h2>Добавить страну</h2>
 
-@using (Html.BeginForm())
+@if (!ViewData.ModelState.IsValid)
 {
-    @Html.EditorForModel()
-    <p><button></button></p>
+    <p class="text-danger">Ошибки</p>
+    <p class="text-warning">@Html.ValidationSummary()</p>
 }
 
+<form role="form" action="@Url.Action()" method="POST">
+    <div class="form-group">
+        <label for="Name">Название страны:</label>
+        <input type="text" name="Name" id="Name" />
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

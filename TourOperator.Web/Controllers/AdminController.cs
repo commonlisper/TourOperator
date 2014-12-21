@@ -38,9 +38,10 @@ namespace TourOperator.Web.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CountryRepository.Insert(newCountry);
+                return RedirectToAction("Countries");
             }
 
-            return RedirectToAction("Countries");
+            return View(newCountry);
         }
 
         public ActionResult EditCountry(Guid id)

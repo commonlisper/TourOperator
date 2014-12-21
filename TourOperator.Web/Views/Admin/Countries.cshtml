@@ -7,12 +7,6 @@
 
 <h2>Countries</h2>
 
-@if (!ViewData.ModelState.IsValid)
-{
-    <p class="text-error">Ошибки</p>
-    <p class="text-warning">@Html.ValidationSummary()</p>
-}
-
 <a class="btn btn-lg btn-info" href="@Url.Action("AddCountry", "Admin")">
     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
     Добавить
