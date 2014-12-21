@@ -33,6 +33,27 @@ namespace TourOperator.Web.Controllers
             return View(_countryRepository.Get(includeProperties: "Tours"));
         }
 
+        public ActionResult AddCountry()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult EditCountry(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public ActionResult RemoveCountry(Guid id)
+        {
+            if (ModelState.IsValid)
+            {
+                _countryRepository.Delete(id);
+            }
+
+            return RedirectToAction("Countries");
+        }
+
         public ActionResult Tours()
         {
             return View(_tourRepository.Get(includeProperties: "Country"));
@@ -46,27 +67,21 @@ namespace TourOperator.Web.Controllers
         public ActionResult Hotels()
         {
             throw new NotImplementedException();
-        }
-
-        public ActionResult EditCountry(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
-        public ActionResult RemoveCountry(Guid id)
-        {           
-            if (ModelState.IsValid)
-            {
-                _countryRepository.Delete(id);                
-            }
-
-            return RedirectToAction("Countries");
-        }
+        }        
 
         public ActionResult EditTour(Guid id)
         {
             throw new NotImplementedException();
         }
+
+        public ActionResult RemoveTour(Guid id)
+        {
+            if (ModelState.IsValid)
+            {
+                _tourRepository.Delete(id);
+            }
+
+            return RedirectToAction("Tours");
+        }        
     }
 }

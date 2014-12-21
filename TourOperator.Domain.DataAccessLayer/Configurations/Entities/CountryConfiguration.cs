@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
     public class CountryConfiguration : EntityTypeConfiguration<Country>
     {
         public CountryConfiguration()
-        {         
+        {
+            Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(c => c.Name).IsRequired();
             Property(c => c.TimestampBytes).IsConcurrencyToken(true);
         }

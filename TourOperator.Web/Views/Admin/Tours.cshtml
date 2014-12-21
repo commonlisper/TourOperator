@@ -7,10 +7,9 @@
 
 <h2>Туры</h2>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped table-responsive">
     <thead>
         <tr>
-            <th>#</th>
             <th>Количество ночей</th>
             <th>Цена</th>
             <th>Дата начала</th>
@@ -21,14 +20,13 @@
         @foreach (var tour in Model)
         {
             <tr>
-                <td>@tour.Id</td>
                 <td>@tour.Nights</td>
                 <td>@tour.Price.ToString("c")</td>
-                <td>@tour.StartedOn ?? @string.Empty</td>
-                <td>@tour.EndedOn ?? @string.Empty</td>
+                <td>@tour.StartedOn</td>
+                <td>@tour.EndedOn</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditTour", "Admin", new { id = @tour.Id })">Редактировать</a>
-                    <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @tour.Id })">Удалить</a>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveTour", "Admin", new { id = @tour.Id })">Удалить</a>
                 </td>
             </tr>
         }
