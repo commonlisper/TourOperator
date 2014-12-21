@@ -15,27 +15,32 @@ namespace TourOperator.Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly IGenericRepository<Country> _countryRepository =
-            new GenericRepository<Country>(new DomainDbContext());
+        private readonly IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
 
-        private readonly IGenericRepository<Tour> _tourRepository = 
-            new GenericRepository<Tour>(new DomainDbContext());
-
-        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
         public ActionResult Countries()
         {
-            return View(_countryRepository.Get(includeProperties: "Tours"));
+            return View(_unitOfWork.CountryRepository.Get(includeProperties: "Tours"));
         }
 
         public ActionResult AddCountry()
         {
-            throw new NotImplementedException();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCountry(Country newCountry)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.CountryRepository.Insert(newCountry);
+            }
+
+            return RedirectToAction("Countries");
         }
 
         public ActionResult EditCountry(Guid id)
@@ -43,12 +48,11 @@ namespace TourOperator.Web.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpGet]
         public ActionResult RemoveCountry(Guid id)
         {
             if (ModelState.IsValid)
             {
-                _countryRepository.Delete(id);
+                _unitOfWork.CountryRepository.Delete(id);
             }
 
             return RedirectToAction("Countries");
@@ -56,7 +60,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Tours()
         {
-            return View(_tourRepository.Get(includeProperties: "Country"));
+            return View(_unitOfWork.TourRepository.Get(includeProperties: "Country"));
         }
 
         public ActionResult HealthResorts()
@@ -67,7 +71,7 @@ namespace TourOperator.Web.Controllers
         public ActionResult Hotels()
         {
             throw new NotImplementedException();
-        }        
+        }
 
         public ActionResult EditTour(Guid id)
         {
@@ -78,10 +82,10 @@ namespace TourOperator.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _tourRepository.Delete(id);
+                _unitOfWork.TourRepository.Delete(id);
             }
 
             return RedirectToAction("Tours");
-        }        
+        }
     }
 }

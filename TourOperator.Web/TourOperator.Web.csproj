@@ -240,6 +240,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Countries.cshtml" />
     <Content Include="Views\Admin\Tours.cshtml" />
+    <Content Include="Views\Admin\AddCountry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

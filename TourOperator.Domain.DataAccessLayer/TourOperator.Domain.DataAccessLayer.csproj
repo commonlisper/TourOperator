@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IGenericRepository.cs" />
+    <Compile Include="Abstract\IUnitOfWork.cs" />
     <Compile Include="Configurations\Context\ContexInitializerDropAlways.cs" />
     <Compile Include="Configurations\Context\ContextInitializerDropIfChanged.cs" />
     <Compile Include="Configurations\Entities\CountryConfiguration.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="DomainDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TourOperator.Domain\TourOperator.Domain.Data.csproj">

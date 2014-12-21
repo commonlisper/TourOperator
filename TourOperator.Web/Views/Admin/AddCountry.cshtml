@@ -1,0 +1,15 @@
+﻿@model TourOperator.Domain.Data.DomainModel.Country
+
+@{
+    ViewBag.Title = "AddCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Добавить страну</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <p><button></button></p>
+}
+
