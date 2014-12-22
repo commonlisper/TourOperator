@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using TourOperator.Domain.Data.DomainModel;
 
-namespace TourOperator.Domain.Data.DomainModel
+namespace TourOperator.Domain.Data.Entities
 {
-    public class Country
+    public partial class Country
     {
         public Country()
         {
             Tours = new HashSet<Tour>();
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; set; }    
         public string Name { get; set; }
         public byte[] TimestampBytes { get; set; }
 

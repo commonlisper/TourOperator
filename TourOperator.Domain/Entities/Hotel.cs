@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using TourOperator.Domain.Data.DomainModel.Enums;
 
-namespace TourOperator.Domain.Data.DomainModel
+namespace TourOperator.Domain.Data.Entities
 {
     public class Hotel
     {

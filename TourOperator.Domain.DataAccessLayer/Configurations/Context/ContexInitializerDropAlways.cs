@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using TourOperator.Domain.Data.DomainModel;
+using TourOperator.Domain.Data.Entities;
 
 namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
 {

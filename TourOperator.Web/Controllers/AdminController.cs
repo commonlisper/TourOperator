@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TourOperator.Domain.Data.DomainModel;
+using TourOperator.Domain.Data.Entities;
 using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 using TourOperator.Domain.DataAccessLayer.Repositories;
@@ -59,6 +60,14 @@ namespace TourOperator.Web.Controllers
             return RedirectToAction("Countries");
         }
 
+        [HttpGet]
+        public JsonResult CheckCountryName(string name)
+        {
+            IEnumerable<Country> result = _unitOfWork.CountryRepository.Get(c => c.Name.Contains(name));
+            
+            return Json(result.Any(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Tours()
         {
             return View(_unitOfWork.TourRepository.Get(includeProperties: "Country"));
@@ -87,6 +96,6 @@ namespace TourOperator.Web.Controllers
             }
 
             return RedirectToAction("Tours");
-        }
+        }        
     }
 }

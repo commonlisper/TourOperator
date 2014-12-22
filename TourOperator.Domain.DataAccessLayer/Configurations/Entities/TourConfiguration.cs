@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TourOperator.Domain.Data.DomainModel;
+using TourOperator.Domain.Data.Entities;
 
 namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
 {

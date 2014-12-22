@@ -1,7 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace TourOperator.Domain.Data.DomainModel
+namespace TourOperator.Domain.Data.Entities
 {
     public class Tour
     {

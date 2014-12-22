@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,15 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\AuthModel\IdentityModels.cs" />
-    <Compile Include="DomainModel\Hotel.cs" />
-    <Compile Include="DomainModel\Country.cs" />
-    <Compile Include="DomainModel\HealthResort.cs" />
-    <Compile Include="DomainModel\Tour.cs" />
+    <Compile Include="Entities\Hotel.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\HealthResort.cs" />
+    <Compile Include="Entities\Tour.cs" />
     <Compile Include="DomainModel\Enums\TypeOfFoodEnum.cs" />
+    <Compile Include="Entities\CountryMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

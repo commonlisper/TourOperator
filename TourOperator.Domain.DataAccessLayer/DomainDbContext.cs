@@ -2,6 +2,7 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TourOperator.Domain.Data.DomainModel;
 using TourOperator.Domain.Data.DomainModel.AuthModel;
+using TourOperator.Domain.Data.Entities;
 using TourOperator.Domain.DataAccessLayer.Configurations.Entities;
 
 namespace TourOperator.Domain.DataAccessLayer
