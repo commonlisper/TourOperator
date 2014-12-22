@@ -36,7 +36,7 @@ namespace TourOperator.Web.Controllers
         [HttpPost]
         public ActionResult AddCountry(Country newCountry)
         {
-            newCountry.Validate(ModelState);
+            Country.Validate(newCountry, ModelState);
 
             if (_unitOfWork.CountryRepository.Get(c => c.Name == newCountry.Name).Any())
             {
@@ -60,8 +60,15 @@ namespace TourOperator.Web.Controllers
         [HttpPost]
         public ActionResult EditCountry(Country updatedCoutry)
         {
+            Country.Validate(updatedCoutry, ModelState);
 
-            return View();
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.CountryRepository.Update(updatedCoutry);
+                return RedirectToAction("Countries");
+            }
+
+            return View(updatedCoutry);
         }
 
         public ActionResult RemoveCountry(Guid id)
