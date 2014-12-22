@@ -25,7 +25,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Countries()
         {
-            return View(_unitOfWork.CountryRepository.Get(includeProperties: "Tours"));
+            return View(_unitOfWork.CountryRepository.Get(includeProperties: "Tours").OrderBy(c => c.Name));
         }
 
         public ActionResult AddCountry()
@@ -36,6 +36,13 @@ namespace TourOperator.Web.Controllers
         [HttpPost]
         public ActionResult AddCountry(Country newCountry)
         {
+            newCountry.Validate(ModelState);
+
+            if (_unitOfWork.CountryRepository.Get(c => c.Name == newCountry.Name).Any())
+            {
+                ModelState.AddModelError("Name", "Такое название страны уже существует, введите другое");
+            }
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.CountryRepository.Insert(newCountry);
@@ -47,7 +54,14 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult EditCountry(Guid id)
         {
-            throw new NotImplementedException();
+            return View(_unitOfWork.CountryRepository.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditCountry(Country updatedCoutry)
+        {
+
+            return View();
         }
 
         public ActionResult RemoveCountry(Guid id)
@@ -58,14 +72,6 @@ namespace TourOperator.Web.Controllers
             }
 
             return RedirectToAction("Countries");
-        }
-
-        [HttpGet]
-        public JsonResult CheckCountryName(string name)
-        {
-            IEnumerable<Country> result = _unitOfWork.CountryRepository.Get(c => c.Name.Contains(name));
-            
-            return Json(result.Any(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Tours()
@@ -96,6 +102,6 @@ namespace TourOperator.Web.Controllers
             }
 
             return RedirectToAction("Tours");
-        }        
+        }
     }
 }

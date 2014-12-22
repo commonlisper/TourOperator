@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace TourOperator.Domain.Data.Entities
@@ -8,10 +9,22 @@ namespace TourOperator.Domain.Data.Entities
     {
         public class CountryMetadata
         {
-            [Required]
+            [Required(ErrorMessage = "Недопустимое название страны")]
             [StringLength(200, MinimumLength = 3, ErrorMessage = "Более 3х символов")]
-            [Remote("CheckCountryName", "Admin")]
             public string Name { get; set; }
         }
-    }    
+
+        // Validation
+        public void Validate(ModelStateDictionary modelState)
+        {
+            if (String.IsNullOrEmpty(this.Name))
+            {
+                modelState.AddModelError("Name", "Недопустимое название страны");
+            }
+            else if (this.Name.Length < 3)
+            {
+                modelState.AddModelError("Name", "Недопустимая длина строки (> 3 символов)");
+            }           
+        }
+    }
 }

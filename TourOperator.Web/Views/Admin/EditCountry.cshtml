@@ -1,0 +1,18 @@
+﻿@model TourOperator.Domain.Data.Entities.Country
+
+@{
+    ViewBag.Title = "Редактировать Страны";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактировать Страну</h2>
+
+<form role="form" method="POST" action="@Url.Action("EditCountry", "Admin")">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Обновить</button>
+</form>
