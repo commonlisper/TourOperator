@@ -115,7 +115,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddTour(Tour newTour)
+        public ActionResult AddTour(TourModelView tourModelView)
         {
             throw new NotImplementedException();
         }

@@ -7,7 +7,7 @@
 
 <h2>Добавить тур</h2>
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
         @Html.LabelFor(model => model.SelectedAvaliableCountryId, new Dictionary<string, object> { { "class", "col-sm-3 control-label" } })
         @Html.DropDownListFor(model => model.SelectedAvaliableCountryId, Model.AvaliableCountries, new { @class = "form-control" })
