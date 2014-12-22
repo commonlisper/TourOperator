@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime;
 using System.Web;
 using System.Web.Mvc;
 using TourOperator.Domain.Data.DomainModel;
@@ -10,6 +12,7 @@ using TourOperator.Domain.Data.Entities;
 using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 using TourOperator.Domain.DataAccessLayer.Repositories;
+using TourOperator.Web.Models.ModelViews;
 
 namespace TourOperator.Web.Controllers
 {
@@ -22,6 +25,8 @@ namespace TourOperator.Web.Controllers
         {
             return View();
         }
+
+        #region Countries
 
         public ActionResult Countries()
         {
@@ -81,10 +86,42 @@ namespace TourOperator.Web.Controllers
             return RedirectToAction("Countries");
         }
 
+        #endregion
+
+
+        #region Tours
+
         public ActionResult Tours()
         {
             return View(_unitOfWork.TourRepository.Get(includeProperties: "Country"));
         }
+
+        public ActionResult AddTour()
+        {
+            if (!_unitOfWork.CountryRepository.Get().Any())
+            {
+                TempData.Add("Message", "Для добавления Тура добавьте хотябы одну Страну");
+                return RedirectToAction("Countries");
+            }
+
+            TourModelView viewModel = new TourModelView
+            {
+                AvaliableCountries =
+                    _unitOfWork.CountryRepository.Get()
+                        .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddTour(Tour newTour)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
 
         public ActionResult HealthResorts()
         {

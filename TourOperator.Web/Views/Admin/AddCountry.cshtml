@@ -1,15 +1,15 @@
 ﻿@model TourOperator.Domain.Data.Entities.Country
 
 @{
-    ViewBag.Title = "AddCountry";
+    ViewBag.Title = "Добавить Страну";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Добавить страну</h2>
+<h2>Добавить Страну</h2>
 
 <form role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
-        <label for="Name">Название страны:</label>
+        <label for="Name">Название страны</label>
         <input type="text" name="Name" id="Name" />
         @Html.ValidationMessageFor(model => model.Name)
     </div>

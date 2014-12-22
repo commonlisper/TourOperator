@@ -7,19 +7,30 @@
 
 <h2>Туры</h2>
 
+<a class="btn btn-lg btn-info" href="@Url.Action("AddTour", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>
+
+<br />
+<br />
+
 <table class="table table-bordered table-striped table-responsive">
     <thead>
         <tr>
+            <th>Страна</th>
             <th>Количество ночей</th>
             <th>Цена</th>
             <th>Дата начала</th>
             <th>Дата окончания</th>
+            <th>Команда</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var tour in Model)
         {
             <tr>
+                <td>@tour.Country.Name</td>
                 <td>@tour.Nights</td>
                 <td>@tour.Price.ToString("c")</td>
                 <td>@tour.StartedOn</td>
@@ -32,3 +43,8 @@
         }
     </tbody>
 </table>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddTour", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>

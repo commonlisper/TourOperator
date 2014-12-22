@@ -1,0 +1,39 @@
+﻿@model TourOperator.Web.Models.ModelViews.TourModelView
+
+@{
+    ViewBag.Title = "Добавить Тур";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Добавить тур</h2>
+
+<form role="form">
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelectedAvaliableCountryId)
+        @Html.DropDownListFor(model => model.SelectedAvaliableCountryId, Model.AvaliableCountries)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tour.Price)
+        @Html.EditorFor(model => model.Tour.Price)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tour.Nights)
+        @Html.EditorFor(model => model.Tour.Nights)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tour.StartedOn)
+        <input type="text" class="datepicker" />
+    </div>
+</form>
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $(".datepicker").datepicker();
+        });
+    </script>
+}
