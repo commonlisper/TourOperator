@@ -2,7 +2,7 @@
 
 namespace TourOperator.Domain.Data.Entities
 {
-    public class Tour
+    public partial class Tour
     {
         public Guid Id { get; set; }
         public decimal Price { get; set; }

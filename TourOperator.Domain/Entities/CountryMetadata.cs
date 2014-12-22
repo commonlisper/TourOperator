@@ -11,6 +11,7 @@ namespace TourOperator.Domain.Data.Entities
         {
             [Required(ErrorMessage = "Недопустимое название страны")]
             [StringLength(200, MinimumLength = 3, ErrorMessage = "Более 3х символов")]
+            [Display(Name = "Название Страны")]
             public string Name { get; set; }
         }
         

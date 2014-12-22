@@ -7,7 +7,7 @@ using System.Web.Mvc.Html;
 
 namespace TourOperator.Web.Helpers
 {
-    public static class ActiveMenuLinkHelper
+    public static class LinkHelper
     {
         public static string MenuActive(
             this HtmlHelper htmlHelper,

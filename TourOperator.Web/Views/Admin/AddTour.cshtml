@@ -15,12 +15,27 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.Price, new { @class = "col-sm-3 control-label" })
-        @Html.EditorFor(model => model.Tour.Price, new { @class = "form-control" })
+        <input type="text" name="Tour.Price"
+               id="Tour_Price"
+               data-val-required="Стоимость не задана"
+               data-val-range-min="0"
+               data-val-range-max="1.79769313486232E+308"
+               data-val-range="Стоимость не может быть нулевой или такой большой"
+               data-val-number="Стоимость должна быть числом"
+               data-val="true" 
+               class="text-box single-line form-control">
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.Nights, new { @class = "col-sm-3 control-label" })
-        @Html.EditorFor(model => model.Tour.Nights, new { @class = "form-control" })
+        <input type="number" name="Tour.Nights"
+               id="Tour_Nights"
+               data-val-required="Количество ночей не может быть нулевым"
+               data-val-range-min="1"
+               data-val-range-max="2147483647"
+               data-val-range="Поле Nights должно иметь значение между 1 и 2147483647."
+               data-val-number="Количество ночей должно быть числом" 
+               data-val="true" class="text-box single-line form-control">
     </div>
 
     <div class="form-group">
@@ -30,8 +45,14 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.EndedOn, new { @class = "col-sm-3 control-label" })
-        <input type="text" class="ended-on-datepicker form-control" id="Tour_EndedOn" name="Tour.EndedOn" />
+        <input type="text" class="ended-on-datepicker form-control" id="Tour_EndedOn" name="Tour.EndedOn"/>
     </div>
+
+    <div class="form-group">
+        @Html.ValidationSummary()
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
 </form>
 
 @section scripts
