@@ -4,7 +4,7 @@ using TourOperator.Domain.Data.DomainModel.Enums;
 
 namespace TourOperator.Domain.Data.Entities
 {
-    public class Hotel
+    public partial class Hotel
     {
         public Hotel()
         {

@@ -14,17 +14,18 @@ namespace TourOperator.Domain.Data.Entities
             [Display(Name = "Название Страны")]
             public string Name { get; set; }
         }
-        
+
         public static void Validate(Country countryToValidate, ModelStateDictionary modelState)
         {
             if (String.IsNullOrEmpty(countryToValidate.Name))
             {
                 modelState.AddModelError("Name", "Поле 'Название страны' не задано'");
             }
-            else if (countryToValidate.Name.Length < 2)
+
+            if (countryToValidate.Name.Length <= 2)
             {
                 modelState.AddModelError("Name", "Поле 'Название страны' требует более 2х символов");
-            }           
+            }
         }
     }
 }

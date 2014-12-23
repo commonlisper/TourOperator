@@ -1,0 +1,32 @@
+﻿@using TourOperator.Web.Helpers
+@model TourOperator.Domain.Data.Entities.Hotel
+
+@{
+    ViewBag.Title = "Редактировать Отель";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Category, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TypeOfFood, new { @class = "col-sm-2" })
+        @Html.DropDownListForEnum(model => model.TypeOfFood, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationSummary()
+    </div>
+    <button class="btn btn-primary" type="submit">Обновить</button>
+</form>
+

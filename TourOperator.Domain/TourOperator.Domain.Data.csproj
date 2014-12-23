@@ -60,6 +60,7 @@
     <Compile Include="Entities\Hotel.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\HealthResort.cs" />
+    <Compile Include="Entities\HotelMetadata.cs" />
     <Compile Include="Entities\Tour.cs" />
     <Compile Include="DomainModel\Enums\TypeOfFoodEnum.cs" />
     <Compile Include="Entities\CountryMetadata.cs" />

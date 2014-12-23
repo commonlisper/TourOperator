@@ -26,7 +26,7 @@ namespace TourOperator.Domain.Data.Entities
                 modelState.AddModelError("Name", "Поле 'Название курорта' необходимо");
             }
 
-            if (healthResortToValidate.Name.Length < 2)
+            if (healthResortToValidate.Name.Length <= 2)
             {
                 modelState.AddModelError("Name", "Поле 'Название курорта' требует более 2х символов");
             }            
