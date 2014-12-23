@@ -8,7 +8,7 @@ using TourOperator.Domain.Data.Entities;
 
 namespace TourOperator.Web.Models.ModelViews
 {
-    public class TourModelView
+    public class TourViewModel
     {
         public Tour Tour { get; set; }
         

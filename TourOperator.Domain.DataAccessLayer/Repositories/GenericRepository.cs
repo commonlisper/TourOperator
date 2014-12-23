@@ -49,26 +49,22 @@ namespace TourOperator.Domain.DataAccessLayer.Repositories
         public void Insert(TEntity entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChanges();
         }
 
         public void Delete(object id)
         {
             _dbSet.Remove(_dbSet.Find(id));
-            _context.SaveChanges();
         }
 
         public void Delete(TEntity entity)
         {
             _dbSet.Remove(entity);
-            _context.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поле {0} должно быть числом.
+        ///   Looks up a localized string similar to Поле &apos;{0}&apos; должно быть числом.
         /// </summary>
         internal static string FieldMustBeNumeric {
             get {

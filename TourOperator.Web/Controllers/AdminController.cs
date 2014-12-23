@@ -51,6 +51,8 @@ namespace TourOperator.Web.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CountryRepository.Insert(newCountry);
+                _unitOfWork.Save();
+
                 return RedirectToAction("Countries");
             }
 
@@ -70,6 +72,8 @@ namespace TourOperator.Web.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CountryRepository.Update(updatedCoutry);
+                _unitOfWork.Save();
+
                 return RedirectToAction("Countries");
             }
 
@@ -81,6 +85,7 @@ namespace TourOperator.Web.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CountryRepository.Delete(id);
+                _unitOfWork.Save();
             }
 
             return RedirectToAction("Countries");
@@ -104,10 +109,10 @@ namespace TourOperator.Web.Controllers
                 return RedirectToAction("Countries");
             }
 
-            TourModelView viewModel = new TourModelView
+            TourViewModel viewModel = new TourViewModel
             {
                 AvaliableCountries =
-                    _unitOfWork.CountryRepository.Get()
+                    GetAvaliableCountries()
                         .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
             };
 
@@ -115,9 +120,50 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddTour(TourModelView tourModelView)
+        public ActionResult AddTour(TourViewModel tourViewModel)
+        {
+            Tour.TourMetadata.Validate(tourViewModel.Tour, ModelState);
+
+            if (ModelState.IsValid)
+            {
+                Country country = _unitOfWork.CountryRepository.Find(tourViewModel.SelectedAvaliableCountryId);
+                tourViewModel.Tour.Country = country;
+                _unitOfWork.TourRepository.Insert(tourViewModel.Tour);
+                _unitOfWork.Save();
+
+                return RedirectToAction("Tours");
+            }
+
+            tourViewModel.AvaliableCountries = AvaliableCountriesAsSelectList();
+            return View(tourViewModel);
+        }
+
+        private IEnumerable<Country> GetAvaliableCountries()
+        {
+            return _unitOfWork.CountryRepository.Get();
+        }
+
+        private IEnumerable<SelectListItem> AvaliableCountriesAsSelectList()
+        {
+            return
+                GetAvaliableCountries()
+                    .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
+        }
+
+        public ActionResult EditTour(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public ActionResult RemoveTour(Guid id)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.TourRepository.Delete(id);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction("Tours");
         }
 
         #endregion
@@ -131,21 +177,6 @@ namespace TourOperator.Web.Controllers
         public ActionResult Hotels()
         {
             throw new NotImplementedException();
-        }
-
-        public ActionResult EditTour(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ActionResult RemoveTour(Guid id)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.TourRepository.Delete(id);
-            }
-
-            return RedirectToAction("Tours");
         }
     }
 }
