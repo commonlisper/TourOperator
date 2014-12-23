@@ -10,6 +10,5 @@ namespace TourOperator.Domain.Data.Entities
         public byte[] TimestampBytes { get; set; }
 
         public virtual Country Country { get; set; }
-        public virtual HealthResort HealthResort { get; set; }
     }
 }

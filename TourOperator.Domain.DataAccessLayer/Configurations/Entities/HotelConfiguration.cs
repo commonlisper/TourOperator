@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -14,6 +15,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
     {
         public HotelConfiguration()
         {
+            Property(h => h.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(h => h.Name).IsRequired().HasMaxLength(200);
             Property(h => h.TypeOfFood).IsRequired();
             Property(h => h.TimestampBytes).IsConcurrencyToken(true);

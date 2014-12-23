@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TourOperator.Domain.Data.Entities.HealthResort>
+
+@{
+    ViewBag.Title = "Курорты";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Курорты</h2>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddHealthResort", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>Тур</th>
+            <th>Название курорта</th>
+            <th>Отель</th>
+            <th>Команда</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var healthResort in Model)
+        {
+            <tr>
+                <td>@(healthResort.Tour.Id.ToString().Substring(0, 3) + " - " + healthResort.Tour.Nights)</td>
+                <td>@healthResort.Name</td>
+                <td>@healthResort.Hotel.Name</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("EditHealthResort", "Admin", new { id = @healthResort.Id })">Редактировать</a>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveHealthResort", "Admin", new { id = @healthResort.Id })">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddHealthResort", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>
+

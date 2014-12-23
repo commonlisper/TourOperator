@@ -10,5 +10,6 @@ namespace TourOperator.Domain.Data.Entities
         public byte[] TimestampBytes { get; set; }
 
         public virtual Hotel Hotel { get; set; }
+        public virtual Tour Tour { get; set; }
     }
 }

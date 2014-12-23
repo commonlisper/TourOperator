@@ -204,12 +204,31 @@ namespace TourOperator.Web.Controllers
         #endregion
 
 
+        #region HealthResorts
+
         public ActionResult HealthResorts()
+        {            
+            return View(_unitOfWork.HealthResortRepository.Get(includeProperties:"Tour, Hotel"));
+        }
+
+        public ActionResult Hotels()
         {
             throw new NotImplementedException();
         }
 
-        public ActionResult Hotels()
+        #endregion
+
+        public ActionResult AddHealthResort()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult EditHealthResort(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult RemoveHealthResort(Guid id)
         {
             throw new NotImplementedException();
         }
