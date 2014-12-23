@@ -10,7 +10,7 @@ namespace TourOperator.Domain.Data.Entities
         public class CountryMetadata
         {
             [Required(ErrorMessage = "Поле 'Название страны' не задано")]
-            [StringLength(200, MinimumLength = 2, ErrorMessage = "Требуется более 2х символов")]
+            [StringLength(200, MinimumLength = 2, ErrorMessage = "Поле 'Название страны' требует более 2х символов")]
             [Display(Name = "Название Страны")]
             public string Name { get; set; }
         }
@@ -23,7 +23,7 @@ namespace TourOperator.Domain.Data.Entities
             }
             else if (countryToValidate.Name.Length < 2)
             {
-                modelState.AddModelError("Name", "Требуется более 2х символов");
+                modelState.AddModelError("Name", "Поле 'Название страны' требует более 2х символов");
             }           
         }
     }

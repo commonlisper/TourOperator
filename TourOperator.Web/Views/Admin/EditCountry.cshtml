@@ -7,7 +7,7 @@
 
 <h2>Редактировать Страну</h2>
 
-<form role="form" method="POST" action="@Url.Action("EditCountry", "Admin")">
+<form role="form" method="POST" action="@Url.Action()">
     <div class="form-group">
         @Html.LabelFor(model => model.Name)
         @Html.EditorFor(model => model.Name)

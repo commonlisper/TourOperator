@@ -289,6 +289,7 @@
     <Content Include="Views\Admin\HealthResorts.cshtml" />
     <Content Include="Views\Admin\Hotels.cshtml" />
     <Content Include="Views\Admin\AddHealthResort.cshtml" />
+    <Content Include="Views\Admin\EditHealthResort.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

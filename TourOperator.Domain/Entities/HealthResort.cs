@@ -4,7 +4,7 @@ using TourOperator.Domain.Data.DomainModel;
 
 namespace TourOperator.Domain.Data.Entities
 {
-    public class HealthResort
+    public partial class HealthResort
     {
         public HealthResort()
         {

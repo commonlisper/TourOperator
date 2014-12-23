@@ -1,4 +1,4 @@
-﻿@model TourOperator.Web.Models.ViewModels.HealthResortViewModel
+﻿@model TourOperator.Domain.Data.Entities.HealthResort
 
 @{
     ViewBag.Title = "Добавить Курорт";
@@ -7,12 +7,15 @@
 
 <h2>Добавить Курорт</h2>
 
-@if (TempData.Count > 0)
-{
-    foreach (var key in TempData.Keys)
-    {
-        <p class="text-warning">
-            @TempData[key]
-        </p>
-    }
-}
+<form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationSummary()
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

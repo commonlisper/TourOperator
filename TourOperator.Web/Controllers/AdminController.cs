@@ -213,48 +213,65 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult AddHealthResort()
         {
-            IEnumerable<Tour> avaliableTours = _unitOfWork.TourRepository.Get().ToArray();
-            IEnumerable<Hotel> avaliableHotels = _unitOfWork.HotelRepository.Get().ToArray();
-
-            if (!avaliableTours.Any())
-            {
-                TempData.Add("Message", "Для добавления курорта добавтье хотя бы один тур");
-                return RedirectToAction("Tours");
-            }
-
-            if (!avaliableHotels.Any())
-            {
-                TempData.Add("Message", "Для добавления курорта добавтье хотя бы один отель");
-                return RedirectToAction("Hotels");
-            }
-
-            HealthResortViewModel viewModel = new HealthResortViewModel
-            {
-                AvaliableTours = avaliableTours,
-                AvaliableHotels = avaliableHotels
-            };
-
-            return View(viewModel);
+            return View();
         }
 
-        private IEnumerable<Tour> GetAvaliableTours()
+        [HttpPost]
+        public ActionResult AddHealthResort(HealthResort newHealthResort)
         {
-            return _unitOfWork.TourRepository.Get();
-        }
+            HealthResort.Validate(newHealthResort, ModelState);
 
-        private IEnumerable<Hotel> GetAvaliableHotels()
-        {
-            return _unitOfWork.HotelRepository.Get();
+            if (_unitOfWork.HealthResortRepository.Get(hr => hr.Name == newHealthResort.Name).Any())
+            {
+                ModelState.AddModelError("Name", "Такое Название курорта уже существует, выберите другое");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HealthResortRepository.Insert(newHealthResort);
+                _unitOfWork.Save();
+
+                return RedirectToAction("HealthResorts");
+            }
+
+            return View(newHealthResort);
         }
 
         public ActionResult EditHealthResort(Guid id)
         {
-            throw new NotImplementedException();
+            return View(_unitOfWork.HealthResortRepository.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditHealthResort(HealthResort healthResortToUpdate)
+        {
+            HealthResort.Validate(healthResortToUpdate, ModelState);
+
+            if (_unitOfWork.HealthResortRepository.Get(hr => hr.Name == healthResortToUpdate.Name).Any())
+            {
+                ModelState.AddModelError("Name", "Такое Название курорта уже существует, выберите другое");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HealthResortRepository.Update(healthResortToUpdate);
+                _unitOfWork.Save();
+
+                return RedirectToAction("HealthResorts");
+            }
+
+            return View(healthResortToUpdate);
         }
 
         public ActionResult RemoveHealthResort(Guid id)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HealthResortRepository.Delete(id);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction("HealthResorts");
         }
 
         #endregion
@@ -264,7 +281,7 @@ namespace TourOperator.Web.Controllers
         public ActionResult Hotels()
         {
             return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours"));
-        }       
+        }
 
         public ActionResult AddHotel()
         {

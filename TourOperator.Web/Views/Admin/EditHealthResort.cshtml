@@ -1,11 +1,11 @@
-﻿@model TourOperator.Domain.Data.Entities.Country
+﻿@model TourOperator.Domain.Data.Entities.HealthResort
 
 @{
-    ViewBag.Title = "Добавить Страну";
+    ViewBag.Title = "Редактировать Курорт";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Добавить Страну</h2>
+<h2>Редактировать Курорт</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
@@ -17,5 +17,6 @@
         @Html.ValidationSummary()
     </div>
 
-    <button type="submit" class="btn btn-primary">Добавить</button>
+    <button type="submit" class="btn btn-primary">Обновить</button>
 </form>
+
