@@ -280,22 +280,60 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Hotels()
         {
-            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours"));
+            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours").OrderBy(h => h.Name));
         }
 
         public ActionResult AddHotel()
         {
-            throw new NotImplementedException();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddHotel(Hotel newHotel)
+        {
+            Hotel.Validate(newHotel, ModelState);
+
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HotelRepository.Insert(newHotel);
+                _unitOfWork.Save();
+
+                return RedirectToAction("Hotels");
+            }
+
+            return View(newHotel);
         }
 
         public ActionResult EditHotel(Guid id)
         {
-            throw new NotImplementedException();
+            return View(_unitOfWork.HotelRepository.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditHotel(Hotel hotelToUpdate)
+        {
+            Hotel.Validate(hotelToUpdate, ModelState);
+
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HotelRepository.Update(hotelToUpdate);
+                _unitOfWork.Save();
+
+                return RedirectToAction("Hotels");
+            }
+
+            return View(hotelToUpdate);
         }
 
         public ActionResult RemoveHotel(Guid id)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.HotelRepository.Delete(id);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction("Hotels");
         }
 
         #endregion

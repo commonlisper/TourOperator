@@ -171,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EnumEditorHtmlHelper.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -290,10 +291,13 @@
     <Content Include="Views\Admin\Hotels.cshtml" />
     <Content Include="Views\Admin\AddHealthResort.cshtml" />
     <Content Include="Views\Admin\EditHealthResort.cshtml" />
+    <Content Include="Views\Admin\AddHotel.cshtml" />
+    <Content Include="Views\Admin\EditHotel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\ModelBinders\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
