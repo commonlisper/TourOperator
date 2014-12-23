@@ -64,6 +64,7 @@
     <Compile Include="DomainModel\Enums\TypeOfFoodEnum.cs" />
     <Compile Include="Entities\CountryMetadata.cs" />
     <Compile Include="Entities\TourMetadata.cs" />
+    <Compile Include="Entities\TypeOfFood.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,16 +7,6 @@
 
 <h2>Отели</h2>
 
-@if (TempData.Count > 0)
-{
-    foreach (var key in TempData.Keys)
-    {
-        <p class="text-warning">
-            @TempData[key]
-        </p>
-    }
-}
-
 <a class="btn btn-lg btn-info" href="@Url.Action("AddHotel", "Admin")">
     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
     Добавить

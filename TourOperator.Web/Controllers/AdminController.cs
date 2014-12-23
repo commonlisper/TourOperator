@@ -299,5 +299,16 @@ namespace TourOperator.Web.Controllers
         }
 
         #endregion
+
+
+        #region TypeOfFoods
+
+        public ActionResult TypeOfFoods()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
     }
 }
