@@ -9,6 +9,6 @@ namespace TourOperator.Domain.Data.Entities
         public int Nights { get; set; }
         public byte[] TimestampBytes { get; set; }
 
-        public virtual Country Country { get; set; }
+        public virtual Country Country { get; set; }        
     }
 }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TourOperator.Domain.Data.Entities.Hotel>
+
+@{
+    ViewBag.Title = "Отели";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Отели</h2>
+
+@if (TempData.Count > 0)
+{
+    foreach (var key in TempData.Keys)
+    {
+        <p class="text-warning">
+            @TempData[key]
+        </p>
+    }
+}
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddHotel", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Тип питания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hotel in Model)
+        {
+            <tr>
+                <td>@hotel.Name</td>
+                <td>@hotel.Category</td>
+                <td>@hotel.TypeOfFood</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("EditHotel", "Admin", new { id = hotel.Id })">Редактировать</a>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveHotel", "Admin", new { id = hotel.Id })">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddHotel", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>

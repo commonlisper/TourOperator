@@ -1,0 +1,18 @@
+﻿@model TourOperator.Web.Models.ViewModels.HealthResortViewModel
+
+@{
+    ViewBag.Title = "Добавить Курорт";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Добавить Курорт</h2>
+
+@if (TempData.Count > 0)
+{
+    foreach (var key in TempData.Keys)
+    {
+        <p class="text-warning">
+            @TempData[key]
+        </p>
+    }
+}

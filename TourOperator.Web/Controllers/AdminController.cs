@@ -12,7 +12,7 @@ using TourOperator.Domain.Data.Entities;
 using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 using TourOperator.Domain.DataAccessLayer.Repositories;
-using TourOperator.Web.Models.ModelViews;
+using TourOperator.Web.Models.ViewModels;
 
 namespace TourOperator.Web.Controllers
 {
@@ -207,20 +207,44 @@ namespace TourOperator.Web.Controllers
         #region HealthResorts
 
         public ActionResult HealthResorts()
-        {            
-            return View(_unitOfWork.HealthResortRepository.Get(includeProperties:"Tour, Hotel"));
-        }
-
-        public ActionResult Hotels()
         {
-            throw new NotImplementedException();
+            return View(_unitOfWork.HealthResortRepository.Get(includeProperties: "Tour, Hotel"));
         }
-
-        #endregion
 
         public ActionResult AddHealthResort()
         {
-            throw new NotImplementedException();
+            IEnumerable<Tour> avaliableTours = _unitOfWork.TourRepository.Get().ToArray();
+            IEnumerable<Hotel> avaliableHotels = _unitOfWork.HotelRepository.Get().ToArray();
+
+            if (!avaliableTours.Any())
+            {
+                TempData.Add("Message", "Для добавления курорта добавтье хотя бы один тур");
+                return RedirectToAction("Tours");
+            }
+
+            if (!avaliableHotels.Any())
+            {
+                TempData.Add("Message", "Для добавления курорта добавтье хотя бы один отель");
+                return RedirectToAction("Hotels");
+            }
+
+            HealthResortViewModel viewModel = new HealthResortViewModel
+            {
+                AvaliableTours = avaliableTours,
+                AvaliableHotels = avaliableHotels
+            };
+
+            return View(viewModel);
+        }
+
+        private IEnumerable<Tour> GetAvaliableTours()
+        {
+            return _unitOfWork.TourRepository.Get();
+        }
+
+        private IEnumerable<Hotel> GetAvaliableHotels()
+        {
+            return _unitOfWork.HotelRepository.Get();
         }
 
         public ActionResult EditHealthResort(Guid id)
@@ -232,5 +256,31 @@ namespace TourOperator.Web.Controllers
         {
             throw new NotImplementedException();
         }
+
+        #endregion
+
+        #region Hotels
+
+        public ActionResult Hotels()
+        {
+            return View(_unitOfWork.HotelRepository.Get());
+        }       
+
+        public ActionResult AddHotel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult EditHotel(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult RemoveHotel(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

@@ -8,8 +8,8 @@ namespace TourOperator.Web
         public void ConfigureDatabase()
         {
             // TODO: change in production!
-            Database.SetInitializer(new ContexInitializerDropAlways());
-            //Database.SetInitializer(new ContextInitializerDropIfChanged());
+            //Database.SetInitializer(new ContexInitializerDropAlways());
+            Database.SetInitializer(new ContextInitializerDropIfChanged());
         }
     }
 }
