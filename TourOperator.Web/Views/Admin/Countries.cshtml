@@ -29,7 +29,7 @@
     <thead>
         <tr>
             <th>Название</th>
-            <th>Туры</th>
+            <th>Количество Туров</th>
             <th>Команда</th>
         </tr>
     </thead>
@@ -41,14 +41,7 @@
                 <td>@country.Tours.Count</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditCountry", "Admin", new { id = @country.Id })">Редактировать</a>
-                    @if (country.Tours.Count > 0)
-                    {
-                        <a class="btn btn-danger disabled" href="@Url.Action("RemoveCountry", "Admin", new { id = @country.Id })">Удалить</a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @country.Id })">Удалить</a>
-                    }
+                    <a class="btn btn-danger" href="@Url.Action("RemoveCountry", "Admin", new { id = @country.Id })">Удалить</a>
                 </td>
             </tr>
         }

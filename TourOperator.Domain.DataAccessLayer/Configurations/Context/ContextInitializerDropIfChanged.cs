@@ -51,19 +51,19 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 new Hotel
                 {
                     Name = "PENSION HOCHWIMMER",
-                    TypeOfFood = TypeOfFoodEnum.BB,
+                    TypeOfFood = TypeOfFoodEnum.EnglishBreakfast,
                     Category = 4
                 },
                 new Hotel
                 {
                     Name = "HUBERTUSHOF HOTEL",
-                    TypeOfFood = TypeOfFoodEnum.BB,
+                    TypeOfFood = TypeOfFoodEnum.BrunchDinnerPlus,
                     Category = 3
                 },
                 new Hotel
                 {
                     Name = "ANTONIUS HOTEL",
-                    TypeOfFood = TypeOfFoodEnum.BB,
+                    TypeOfFood = TypeOfFoodEnum.FBPlusExtFB,
                     Category = 4
                 }
             };

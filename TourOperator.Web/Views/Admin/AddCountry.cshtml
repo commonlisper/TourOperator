@@ -10,13 +10,7 @@
 <form role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
         @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
-        <input type="text" name="Name" id="Name"
-               data-val-required="Недопустимое название страны"
-               data-val-length-min="3"
-               data-val-length-max="200"
-               data-val-length="Более 3х символов"
-               data-val="true"
-               class="text-box single-line form-control" />
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })        
     </div>
 
     <div class="form-group">

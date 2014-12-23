@@ -9,8 +9,8 @@ namespace TourOperator.Domain.Data.Entities
     {
         public class CountryMetadata
         {
-            [Required(ErrorMessage = "Недопустимое название страны")]
-            [StringLength(200, MinimumLength = 3, ErrorMessage = "Более 3х символов")]
+            [Required(ErrorMessage = "Поле 'Название страны' не задано")]
+            [StringLength(200, MinimumLength = 2, ErrorMessage = "Требуется более 2х символов")]
             [Display(Name = "Название Страны")]
             public string Name { get; set; }
         }
@@ -19,11 +19,11 @@ namespace TourOperator.Domain.Data.Entities
         {
             if (String.IsNullOrEmpty(countryToValidate.Name))
             {
-                modelState.AddModelError("Name", "Недопустимое название страны");
+                modelState.AddModelError("Name", "Поле 'Название страны' не задано'");
             }
-            else if (countryToValidate.Name.Length < 3)
+            else if (countryToValidate.Name.Length < 2)
             {
-                modelState.AddModelError("Name", "Недопустимая длина строки (> 3 символов)");
+                modelState.AddModelError("Name", "Требуется более 2х символов");
             }           
         }
     }

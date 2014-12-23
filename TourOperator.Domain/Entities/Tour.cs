@@ -9,7 +9,7 @@ namespace TourOperator.Domain.Data.Entities
         public int Price { get; set; }
         public int Nights { get; set; }
         public byte[] TimestampBytes { get; set; }
-        public Guid HealthResordId { get; set; }
+        public Guid HealthResortId { get; set; }
         public Guid HotelId { get; set; }
         public Guid CountryId { get; set; }
         

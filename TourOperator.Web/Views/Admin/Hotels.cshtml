@@ -31,6 +31,7 @@
             <th>Название</th>
             <th>Категория</th>
             <th>Тип питания</th>
+            <th>Количество туров</th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +41,7 @@
                 <td>@hotel.Name</td>
                 <td>@hotel.Category</td>
                 <td>@hotel.TypeOfFood</td>
+                <td>@hotel.Tours.Count</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditHotel", "Admin", new { id = hotel.Id })">Редактировать</a>
                     <a class="btn btn-danger" href="@Url.Action("RemoveHotel", "Admin", new { id = hotel.Id })">Удалить</a>

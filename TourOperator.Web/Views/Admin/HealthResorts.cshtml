@@ -18,9 +18,8 @@
 <table class="table table-bordered table-striped table-responsive">
     <thead>
         <tr>
-            <th>Тур</th>
             <th>Название курорта</th>
-            <th>Отель</th>
+            <th>Количество туров</th>
             <th>Команда</th>
         </tr>
     </thead>
@@ -28,9 +27,8 @@
         @foreach (var healthResort in Model)
         {
             <tr>
-                <td>@(healthResort.Tour.Id.ToString().Substring(0, 3) + " - " + healthResort.Tour.Nights)</td>
                 <td>@healthResort.Name</td>
-                <td>@healthResort.Hotel.Name</td>
+                <td>@healthResort.Tours.Count</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditHealthResort", "Admin", new { id = @healthResort.Id })">Редактировать</a>
                     <a class="btn btn-danger" href="@Url.Action("RemoveHealthResort", "Admin", new { id = @healthResort.Id })">Удалить</a>

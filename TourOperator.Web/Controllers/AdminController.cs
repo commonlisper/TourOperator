@@ -208,7 +208,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult HealthResorts()
         {
-            return View(_unitOfWork.HealthResortRepository.Get(includeProperties: "Tour, Hotel"));
+            return View(_unitOfWork.HealthResortRepository.Get(includeProperties: "Tours"));
         }
 
         public ActionResult AddHealthResort()
@@ -263,7 +263,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Hotels()
         {
-            return View(_unitOfWork.HotelRepository.Get());
+            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours"));
         }       
 
         public ActionResult AddHotel()
