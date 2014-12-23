@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Text;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TourOperator.Domain.Data.DomainModel;
 using TourOperator.Domain.Data.DomainModel.AuthModel;
@@ -12,6 +13,7 @@ namespace TourOperator.Domain.DataAccessLayer
         public DomainDbContext()
             : base("DomainModel", throwIfV1Schema: false)
         {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public static DomainDbContext Create()

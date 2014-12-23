@@ -30,7 +30,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Countries()
         {
-            return View(_unitOfWork.CountryRepository.Get(includeProperties: "Tours").OrderBy(c => c.Name));
+            return View(_unitOfWork.CountryRepository.Get(includeProperties:"Tours").OrderBy(c => c.Name));
         }
 
         public ActionResult AddCountry()
@@ -98,7 +98,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Tours()
         {
-            return View(_unitOfWork.TourRepository.Get(includeProperties: "Country"));
+            return View(_unitOfWork.TourRepository.Get(includeProperties:"Country"));
         }
 
         public ActionResult AddTour()
@@ -128,6 +128,7 @@ namespace TourOperator.Web.Controllers
             {
                 Country country = _unitOfWork.CountryRepository.Find(tourViewModel.SelectedAvaliableCountryId);
                 tourViewModel.Tour.Country = country;
+
                 _unitOfWork.TourRepository.Insert(tourViewModel.Tour);
                 _unitOfWork.Save();
 
@@ -152,7 +153,42 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult EditTour(Guid id)
         {
-            throw new NotImplementedException();
+            Tour tourToUpdate = _unitOfWork.TourRepository.Find(id);
+
+            TourViewModel tourViewModel = new TourViewModel
+            {
+                SelectedAvaliableCountryId = tourToUpdate.Country.Id,
+                AvaliableCountries = AvaliableCountriesAsSelectList(),
+                Tour = tourToUpdate
+            };
+
+            return View(tourViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditTour(TourViewModel tourViewModel)
+        {
+            Tour.TourMetadata.Validate(tourViewModel.Tour, ModelState);
+
+            if (ModelState.IsValid)
+            {
+                Country country =
+                    _unitOfWork.CountryRepository.Get(where: c => c.Tours.Contains(tourViewModel.Tour)).First();
+                Country newCountry = _unitOfWork.CountryRepository.Find(tourViewModel.SelectedAvaliableCountryId);
+
+                if (tourViewModel.SelectedAvaliableCountryId != country.Id)
+                {
+                    tourViewModel.Tour.Country = newCountry;
+                }
+
+                _unitOfWork.TourRepository.Update(tourViewModel.Tour);
+                _unitOfWork.Save();
+
+                return RedirectToAction("Tours");
+            }
+
+            tourViewModel.AvaliableCountries = AvaliableCountriesAsSelectList();
+            return View(tourViewModel);
         }
 
         public ActionResult RemoveTour(Guid id)

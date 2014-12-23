@@ -1,0 +1,33 @@
+﻿@model TourOperator.Web.Models.ModelViews.TourViewModel
+
+@{
+    ViewBag.Title = "Редактировать Тур";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактировать Тур</h2>
+
+<form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    @Html.HiddenFor(model=>model.Tour.Id)
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelectedAvaliableCountryId, new Dictionary<string, object> { { "class", "col-sm-3 control-label" } })
+        @Html.DropDownListFor(model => model.SelectedAvaliableCountryId, new SelectList(Model.AvaliableCountries, "Value", "Text", Model.SelectedAvaliableCountryId), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tour.Price, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(model => model.Tour.Price, new Dictionary<string, object> { { "class", "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tour.Nights, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(model => model.Tour.Nights, new Dictionary<string, object> { { "class", "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationSummary()
+    </div>
+
+    <button type="submit" class="btn btn-primary">Обновить</button>
+</form>
+

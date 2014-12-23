@@ -11,7 +11,7 @@ namespace TourOperator.Domain.Data.Entities
         //public DateTime? EndedOn { get; set; }
         public byte[] TimestampBytes { get; set; }
 
-        public virtual Country Country { get; set; }
-        public virtual HealthResort HealthResort { get; set; }
+        public Country Country { get; set; }
+        public HealthResort HealthResort { get; set; }
     }
 }
