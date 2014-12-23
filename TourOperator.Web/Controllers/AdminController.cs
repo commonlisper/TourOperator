@@ -30,7 +30,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Countries()
         {
-            return View(_unitOfWork.CountryRepository.Get(includeProperties:"Tours").OrderBy(c => c.Name));
+            return View(_unitOfWork.CountryRepository.Get(includeProperties: "Tours").OrderBy(c => c.Name));
         }
 
         public ActionResult AddCountry()
@@ -172,13 +172,12 @@ namespace TourOperator.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                Country country =
-                    _unitOfWork.CountryRepository.Get(where: c => c.Tours.Contains(tourViewModel.Tour)).First();
-                Country newCountry = _unitOfWork.CountryRepository.Find(tourViewModel.SelectedAvaliableCountryId);
+                tourViewModel.Tour = _unitOfWork.TourRepository.Find(tourViewModel.Tour.Id);
 
-                if (tourViewModel.SelectedAvaliableCountryId != country.Id)
+                if (tourViewModel.SelectedAvaliableCountryId != tourViewModel.Tour.Country.Id)
                 {
-                    tourViewModel.Tour.Country = newCountry;
+                    tourViewModel.Tour.Country =
+                        _unitOfWork.CountryRepository.Find(tourViewModel.SelectedAvaliableCountryId);
                 }
 
                 _unitOfWork.TourRepository.Update(tourViewModel.Tour);
