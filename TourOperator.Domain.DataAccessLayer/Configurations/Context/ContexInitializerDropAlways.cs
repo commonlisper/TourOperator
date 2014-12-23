@@ -27,26 +27,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 {
                     Name = "Турция"
                 }
-            };
-
-            List<Tour> tours = new List<Tour>
-            {
-                new Tour
-                {
-                    Price = 800,
-                    Nights = 15
-                },
-                new Tour
-                {
-                    Price = 650,
-                    Nights = 10
-                },
-                new Tour
-                {
-                    Price = 350,
-                    Nights = 5
-                }
-            };
+            };           
 
             List<HealthResort> healthResorts = new List<HealthResort>
             {
@@ -86,22 +67,41 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 }
             };
 
-            countries[0].Tours.Add(tours[0]);
-            countries[1].Tours.Add(tours[1]);
-            countries[2].Tours.Add(tours[2]);
-
-            healthResorts[0].Tour = tours[0];
-            healthResorts[0].Hotel = hotels[0];
-
-            healthResorts[1].Tour = tours[1];
-            healthResorts[1].Hotel = hotels[1];
-
-            healthResorts[2].Tour = tours[2];
-            healthResorts[2].Hotel = hotels[2];
-
             context.Countries.AddRange(countries);
             context.HealthResorts.AddRange(healthResorts);
-            context.SaveChanges();       
+            context.Hotels.AddRange(hotels);
+            context.SaveChanges();
+
+            List<Tour> tours = new List<Tour>
+            {
+                new Tour
+                {
+                    Price = 800,
+                    Nights = 15,
+                    Country = countries[0],
+                    HealthResort = healthResorts[0],
+                    Hotel = hotels[0]
+                },
+                new Tour
+                {
+                    Price = 650,
+                    Nights = 10,
+                    Country = countries[1],
+                    HealthResort = healthResorts[1],
+                    Hotel = hotels[1]
+                },
+                new Tour
+                {
+                    Price = 350,
+                    Nights = 5,
+                    Country = countries[2],
+                    HealthResort = healthResorts[2],
+                    Hotel = hotels[2]
+                }                
+            };
+
+            context.Tours.AddRange(tours);
+            context.SaveChanges();
         }
     }
 }

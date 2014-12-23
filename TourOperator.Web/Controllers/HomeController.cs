@@ -13,7 +13,8 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(_dbContext.Countries.ToList());
+            var countries = _dbContext.Countries.ToList();
+            return View();
         }
 
         public ActionResult About()
