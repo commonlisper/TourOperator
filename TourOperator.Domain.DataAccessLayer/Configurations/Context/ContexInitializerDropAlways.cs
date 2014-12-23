@@ -16,17 +16,17 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
             {
                 new Tour
                 {
-                    Price = 800.00m,
+                    Price = 800,
                     Nights = 15
                 },
                 new Tour
                 {
-                    Price = 650.00m,
+                    Price = 650,
                     Nights = 10
                 },
                 new Tour
                 {
-                    Price = 350m,
+                    Price = 350,
                     Nights = 5
                 }
             };

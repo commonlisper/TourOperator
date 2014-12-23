@@ -14,10 +14,8 @@ namespace TourOperator.Domain.Data.Entities
         public class TourMetadata
         {
             [Display(Name = "Стоимость тура")]
-            [Required(ErrorMessage = "Поле 'Стоимость тура' не задана")]
-            [Range(0.00, double.MaxValue, ErrorMessage = "Значение поля 'Стоимость тура' вышло за границы")]
-            [DataType(DataType.Currency)]
-            public decimal Price { get; set; }
+            [Required(ErrorMessage = "Поле 'Стоимость тура' не задана")]           
+            public int Price { get; set; }
 
             [Display(Name = "Количество ночей")]
             [Required(ErrorMessage = "Поле 'Количество ночей' не задано")]

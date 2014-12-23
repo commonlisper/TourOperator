@@ -14,10 +14,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
     {
         public TourConfiguration()
         {
-            Property(t=>t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(t => t.Price).IsRequired();
-            //Property(t => t.StartedOn).HasColumnType("datetime2").IsOptional();
-            //Property(t => t.EndedOn).HasColumnType("datetime2").IsOptional();
+            Property(t=>t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);            
             Property(t => t.Nights).IsRequired();
             Property(t => t.TimestampBytes).IsConcurrencyToken(true);
         }
