@@ -13,7 +13,6 @@ namespace TourOperator.Domain.DataAccessLayer
         public DomainDbContext()
             : base("DomainModel", throwIfV1Schema: false)
         {
-            Configuration.LazyLoadingEnabled = false;
         }
 
         public static DomainDbContext Create()

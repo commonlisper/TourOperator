@@ -38,7 +38,7 @@ namespace TourOperator.Domain.DataAccessLayer.Repositories
                         .Aggregate(entitySet, (current, property) => current.Include(property));
             }
 
-            return orderBy != null ? orderBy(entitySet).ToList() : entitySet.ToList();
+            return orderBy == null ? entitySet.ToList() : orderBy(entitySet).ToList();
         }
 
         public TEntity Find(object id)

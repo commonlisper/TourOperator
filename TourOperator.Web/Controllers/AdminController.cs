@@ -98,7 +98,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Tours()
         {
-            return View(_unitOfWork.TourRepository.Get(includeProperties:"Country"));
+            return View(_unitOfWork.TourRepository.Get(includeProperties: "Country"));
         }
 
         public ActionResult AddTour()

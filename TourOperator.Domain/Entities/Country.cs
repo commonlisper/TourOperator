@@ -15,6 +15,6 @@ namespace TourOperator.Domain.Data.Entities
         public string Name { get; set; }
         public byte[] TimestampBytes { get; set; }
 
-        public ICollection<Tour> Tours { get; set; }
+        public virtual ICollection<Tour> Tours { get; set; }
     }
 }
