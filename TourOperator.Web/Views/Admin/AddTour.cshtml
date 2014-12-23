@@ -15,37 +15,22 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.Price, new { @class = "col-sm-3 control-label" })
-        <input type="text" name="Tour.Price"
-               id="Tour_Price"
-               data-val-required="Стоимость не задана"
-               data-val-range-min="0"
-               data-val-range-max="1.79769313486232E+308"
-               data-val-range="Стоимость не может быть нулевой или такой большой"
-               data-val-number="Стоимость должна быть числом"
-               data-val="true" 
-               class="text-box single-line form-control">
+        @Html.TextBoxFor(model => model.Tour.Price, new Dictionary<string, object> { { "class", "form-control" } })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.Nights, new { @class = "col-sm-3 control-label" })
-        <input type="number" name="Tour.Nights"
-               id="Tour_Nights"
-               data-val-required="Количество ночей не может быть нулевым"
-               data-val-range-min="1"
-               data-val-range-max="2147483647"
-               data-val-range="Поле Nights должно иметь значение между 1 и 2147483647."
-               data-val-number="Количество ночей должно быть числом" 
-               data-val="true" class="text-box single-line form-control">
+        @Html.TextBoxFor(model => model.Tour.Nights, new Dictionary<string, object> { { "class", "form-control" } })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.StartedOn, new { @class = "col-sm-3 control-label" })
-        <input type="text" class="started-on-datepicker form-control" id="Tour_StartedOn" name="Tour.StartedOn" />
+        @Html.TextBoxFor(model => model.Tour.StartedOn, new Dictionary<string, object> { { "class", "started-on-datepicker form-control" } })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Tour.EndedOn, new { @class = "col-sm-3 control-label" })
-        <input type="text" class="ended-on-datepicker form-control" id="Tour_EndedOn" name="Tour.EndedOn"/>
+        @Html.TextBoxFor(model => model.Tour.EndedOn, new Dictionary<string, object> { { "class", "ended-on-datepicker form-control" } })
     </div>
 
     <div class="form-group">
