@@ -1,12 +1,11 @@
-﻿@using System.Web.ModelBinding
-@model TourOperator.Web.Models.ViewModels.TourViewModel
+﻿@model TourOperator.Web.Models.ViewModels.TourViewModel
 
 @{
     ViewBag.Title = "Добавить Тур";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Добавить тур</h2>
+<h2>@ViewBag.Title</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     <div class="form-group">

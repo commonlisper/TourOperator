@@ -7,7 +7,7 @@ using TourOperator.Domain.Data.DomainModel.Enums;
 
 namespace TourOperator.Domain.Data.Entities
 {
-    public class TypeOfFood
+    public partial class TypeOfFood
     {
         public Guid Id { get; set; }
         public TypeOfFoodEnum FoodType { get; set; }    

@@ -66,11 +66,10 @@
     <Compile Include="Entities\CountryMetadata.cs" />
     <Compile Include="Entities\TourMetadata.cs" />
     <Compile Include="Entities\TypeOfFood.cs" />
+    <Compile Include="Entities\TypeOfFoodMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

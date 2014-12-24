@@ -22,6 +22,7 @@ namespace TourOperator.Domain.DataAccessLayer
             TourRepository = new GenericRepository<Tour>(_context);
             HealthResortRepository = new GenericRepository<HealthResort>(_context);
             HotelRepository = new GenericRepository<Hotel>(_context);
+            TypeOfFoodRepository = new GenericRepository<TypeOfFood>(_context);
         }
 
         private bool _disposed;
@@ -52,6 +53,8 @@ namespace TourOperator.Domain.DataAccessLayer
         public IGenericRepository<HealthResort> HealthResortRepository { get; private set; }
 
         public IGenericRepository<Hotel> HotelRepository { get; private set; }
+
+        public IGenericRepository<TypeOfFood> TypeOfFoodRepository { get; private set; }
 
         public void Save()
         {

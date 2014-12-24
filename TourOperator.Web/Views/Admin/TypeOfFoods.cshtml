@@ -1,0 +1,40 @@
+﻿@using TourOperator.Domain.Data.Entities
+@model IEnumerable<TypeOfFood>
+
+@{
+    ViewBag.Title = "Типы питания";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddTypeOfFood", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Тип питания</td>
+            <td>Описание</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TypeOfFood food in Model)
+        {
+            <tr>
+                <td>@food.FoodType.ToString()</td>
+                <td>@(food.Description.Substring(0, 50) + "...")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-lg btn-info" href="@Url.Action("AddTypeOfFood", "Admin")">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Добавить
+</a>

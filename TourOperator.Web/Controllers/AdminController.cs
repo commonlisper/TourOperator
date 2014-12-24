@@ -351,10 +351,14 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult TypeOfFoods()
         {
+            return View(_unitOfWork.TypeOfFoodRepository.Get());
+        }        
+
+        public ActionResult AddTypeOfFood()
+        {
             throw new NotImplementedException();
         }
 
         #endregion
-
     }
 }

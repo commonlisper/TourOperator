@@ -28,11 +28,13 @@ namespace TourOperator.Domain.DataAccessLayer
             modelBuilder.Configurations.Add(new HealthResortConfiguration());
             modelBuilder.Configurations.Add(new HotelConfiguration());
             modelBuilder.Configurations.Add(new TourConfiguration());
+            modelBuilder.Configurations.Add(new TypeOfFoodConfiguration());
         }
 
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<HealthResort> HealthResorts { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
+        public virtual DbSet<TypeOfFood> TypeOfFoods { get; set; }
     }
 }

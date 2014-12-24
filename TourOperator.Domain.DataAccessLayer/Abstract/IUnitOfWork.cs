@@ -14,6 +14,7 @@ namespace TourOperator.Domain.DataAccessLayer.Abstract
         IGenericRepository<Tour> TourRepository { get; }
         IGenericRepository<HealthResort> HealthResortRepository { get; }
         IGenericRepository<Hotel> HotelRepository { get; }
+        IGenericRepository<TypeOfFood> TypeOfFoodRepository { get; }
         void Save();
     }
 }
