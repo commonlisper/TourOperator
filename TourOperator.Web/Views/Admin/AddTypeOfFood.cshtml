@@ -1,8 +1,8 @@
 ﻿@using TourOperator.Web.Helpers
-@model TourOperator.Domain.Data.Entities.Hotel
+@model TourOperator.Domain.Data.Entities.TypeOfFood
 
 @{
-    ViewBag.Title = "Редактировать Отель";
+    ViewBag.Title = "Добавить Тип питания";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,22 +10,12 @@
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.LabelFor(model => model.FoodType, new { @class = "col-sm-2 control-label" })
+        @Html.DropDownListForEnum(model => model.FoodType, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Category, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TypeOfFood, new { @class = "col-sm-2" })
-        @Html.DropDownListForEnum(model => model.TypeOfFood, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2" })
+        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
     </div>
     <div class="form-group">
         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
@@ -34,7 +24,8 @@
     <div class="form-group">
         @Html.ValidationSummary()
     </div>
-    <button class="btn btn-primary" type="submit">Обновить</button>
+
+    <button class="btn btn-primary" type="submit">Добавить</button>
 </form>
 
 @section scripts

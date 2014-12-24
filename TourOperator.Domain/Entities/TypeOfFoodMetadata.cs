@@ -15,9 +15,11 @@ namespace TourOperator.Domain.Data.Entities
         public class TypeOfFoodMetadata
         {
             [Required(ErrorMessage = "Поле 'Тип питания' не задано")]
+            [Display(Name = "Тип питания")]
             public TypeOfFoodEnum FoodType { get; set; }
 
             [AllowHtml]
+            [Display(Name = "Описание")]
             public string Description { get; set; }
         }
     }

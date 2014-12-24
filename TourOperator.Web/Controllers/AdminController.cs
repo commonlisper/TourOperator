@@ -356,7 +356,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult AddTypeOfFood()
         {
-            throw new NotImplementedException();
+            return View();
         }
 
         #endregion
