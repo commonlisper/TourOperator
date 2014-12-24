@@ -28,6 +28,9 @@ namespace TourOperator.Domain.Data.Entities
             [Required(ErrorMessage = "Поле 'Тип питания' не задано")]
             [Display(Name = "Тип питания")]
             public TypeOfFoodEnum TypeOfFood { get; set; }
+
+            [Display(Name = "Описание отеля")]
+            public string Description { get; set; }
         }
 
         public static void Validate(Hotel hotelToValidate, ModelStateDictionary modelState)

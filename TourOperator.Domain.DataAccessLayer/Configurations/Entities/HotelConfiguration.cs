@@ -18,6 +18,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
             Property(h => h.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(h => h.Name).IsRequired().HasMaxLength(200);
             Property(h => h.TypeOfFood).IsRequired();
+            Property(h => h.Description).IsOptional().HasColumnType("varchar(max)");
             Property(h => h.TimestampBytes).IsConcurrencyToken(true);
         }
     }

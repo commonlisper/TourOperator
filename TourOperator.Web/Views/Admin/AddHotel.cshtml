@@ -21,7 +21,12 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.TypeOfFood, new { @class = "col-sm-2" })
-        @Html.DropDownListForEnum(model=>model.TypeOfFood, new { @class = "form-control" })
+        @Html.DropDownListForEnum(model => model.TypeOfFood, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2" })
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -29,3 +34,27 @@
     </div>
     <button class="btn btn-primary" type="submit">Добавить</button>
 </form>
+
+@section scripts
+{
+    <script>
+        tinymce.init({
+            selector: "#Description",
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            style_formats: [
+                { title: 'Bold text', inline: 'b' },
+                { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+                { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+                { title: 'Example 1', inline: 'span', classes: 'example1' },
+                { title: 'Example 2', inline: 'span', classes: 'example2' },
+                { title: 'Table styles' },
+                { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+            ],
+            language: 'ru'
+        });
+    </script>
+}
