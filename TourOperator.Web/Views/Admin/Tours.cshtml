@@ -31,6 +31,8 @@
             <th>Страна</th>
             <th>Количество ночей</th>
             <th>Цена</th>
+            <th>Курорт</th>
+            <th>Отель</th>
             <th>Команда</th>
         </tr>
     </thead>
@@ -41,6 +43,8 @@
                 <td>@tour.Country.Name</td>
                 <td>@tour.Nights</td>
                 <td>@tour.Price.ToString("c")</td>
+                <td>@tour.HealthResort.Name</td>
+                <td>@tour.Hotel.Name</td>                
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditTour", "Admin", new { id = @tour.Id })">Редактировать</a>
 

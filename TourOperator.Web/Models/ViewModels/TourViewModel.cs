@@ -10,8 +10,16 @@ namespace TourOperator.Web.Models.ViewModels
     {
         public Tour Tour { get; set; }
         
-        [Display(Name = "Страна для тура")]
-        public Guid SelectedAvaliableCountryId { get; set; }
-        public IEnumerable<SelectListItem> AvaliableCountries { get; set; }
+        [Display(Name = "Страна тура")]
+        public Guid SelectedCountryId { get; set; }
+
+        [Display(Name = "Курорт тура")]
+        public Guid SelecterHealthResortId { get; set; }
+
+        [Display(Name = "Отель тура")]
+        public Guid SelectedHotelId { get; set; }
+        public IEnumerable<SelectListItem> Countries { get; set; }
+        public IEnumerable<SelectListItem> HealthResorts { get; set; }
+        public IEnumerable<SelectListItem> Hotels { get; set; }
     }
 }
