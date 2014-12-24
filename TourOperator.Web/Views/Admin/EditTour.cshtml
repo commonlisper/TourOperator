@@ -9,9 +9,22 @@
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     @Html.HiddenFor(model=>model.Tour.Id)
+    @Html.HiddenFor(model => model.Tour.CountryId)
+    @Html.HiddenFor(model => model.Tour.HealthResortId)
+    @Html.HiddenFor(model => model.Tour.HotelId)
     <div class="form-group">
         @Html.LabelFor(model => model.SelectedCountryId, new Dictionary<string, object> { { "class", "col-sm-3 control-label" } })
         @Html.DropDownListFor(model => model.SelectedCountryId, new SelectList(Model.Countries, "Value", "Text", Model.SelectedCountryId), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelecterHealthResortId, new Dictionary<string, object> { { "class", "col-sm-3 control-label" } })
+        @Html.DropDownListFor(model => model.SelecterHealthResortId, new SelectList(Model.HealthResorts, "Value", "Text", Model.SelecterHealthResortId), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelectedHotelId, new Dictionary<string, object> { { "class", "col-sm-3 control-label" } })
+        @Html.DropDownListFor(model => model.SelectedHotelId, new SelectList(Model.Hotels, "Value", "Text", Model.SelectedHotelId), new { @class = "form-control" })
     </div>
 
     <div class="form-group">
