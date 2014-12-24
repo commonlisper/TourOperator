@@ -29,6 +29,7 @@ namespace TourOperator.Domain.Data.Entities
             [Display(Name = "Тип питания")]
             public TypeOfFoodEnum TypeOfFood { get; set; }
 
+            [AllowHtml]
             [Display(Name = "Описание отеля")]
             public string Description { get; set; }
         }
