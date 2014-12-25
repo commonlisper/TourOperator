@@ -8,12 +8,12 @@ using TourOperator.Domain.DataAccessLayer;
 namespace TourOperator.Web.Controllers
 {
     public class HomeController : Controller
-    {
-        private readonly DomainDbContext _dbContext = new DomainDbContext();
-
+    {      
         public ActionResult Index()
         {
-            var countries = _dbContext.Countries.ToList();
+            UnitOfWork unitOfWork = new UnitOfWork(new DomainDbContext());
+            var countries = unitOfWork.CountryRepository.Get();
+
             return View();
         }
 

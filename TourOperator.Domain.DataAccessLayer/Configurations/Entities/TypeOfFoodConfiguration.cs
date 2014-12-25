@@ -14,8 +14,8 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
         public TypeOfFoodConfiguration()
         {
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(t => t.FoodType).IsRequired();
-            Property(t => t.Description).IsOptional();
+            Property(t => t.Title).IsRequired();
+            Property(t => t.Description).IsRequired().HasColumnType("varchar(max)");
         }
     }
 }

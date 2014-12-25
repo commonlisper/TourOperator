@@ -16,6 +16,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
         {
             Property(hr => hr.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(hr => hr.Name).IsRequired().HasMaxLength(200);
+            Property(hr => hr.Description).IsOptional().HasColumnType("varchar(max)");
             Property(hr => hr.TimestampBytes).IsConcurrencyToken(true);
         }
     }

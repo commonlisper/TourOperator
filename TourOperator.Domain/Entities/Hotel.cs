@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using TourOperator.Domain.Data.DomainModel.Enums;
 
 namespace TourOperator.Domain.Data.Entities
 {
@@ -9,15 +8,16 @@ namespace TourOperator.Domain.Data.Entities
         public Hotel()
         {
             Tours = new HashSet<Tour>();
+            TypeOfFoods = new HashSet<TypeOfFood>();
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public int? Category { get; set; }        
-        public TypeOfFoodEnum TypeOfFood { get; set; }
+        public int? Category { get; set; }
         public string Description { get; set; }
         public byte[] TimestampBytes { get; set; }
 
-        public virtual ICollection<Tour> Tours { get; set; }       
+        public virtual ICollection<Tour> Tours { get; set; }        
+        public virtual ICollection<TypeOfFood> TypeOfFoods { get; set; }
     }
 }

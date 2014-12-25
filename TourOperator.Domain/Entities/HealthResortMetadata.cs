@@ -17,6 +17,10 @@ namespace TourOperator.Domain.Data.Entities
             [StringLength(200, MinimumLength = 2, ErrorMessage = "Поле 'Название курорта' требует более 2х символов")]
             [Display(Name = "Название курорта")]
             public string Name { get; set; }
+
+            [AllowHtml]
+            [Display(Name = "Описание курорта")]
+            public string Description { get; set; }
         }
 
         public static void Validate(HealthResort healthResortToValidate, ModelStateDictionary modelState)

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using TourOperator.Domain.Data.DomainModel;
-using TourOperator.Domain.Data.DomainModel.Enums;
 using TourOperator.Domain.Data.Entities;
 
 namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
@@ -51,19 +49,16 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 new Hotel
                 {
                     Name = "PENSION HOCHWIMMER",
-                    TypeOfFood = TypeOfFoodEnum.EnglishBreakfast,
-                    Category = 4
+                    Category = 4                    
                 },
                 new Hotel
                 {
                     Name = "HUBERTUSHOF HOTEL",
-                    TypeOfFood = TypeOfFoodEnum.BrunchDinnerPlus,
                     Category = 3
                 },
                 new Hotel
                 {
                     Name = "ANTONIUS HOTEL",
-                    TypeOfFood = TypeOfFoodEnum.FBPlusExtFB,
                     Category = 4
                 }
             };
@@ -72,6 +67,28 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
             context.HealthResorts.AddRange(healthResorts);
             context.Hotels.AddRange(hotels);
             context.SaveChanges();
+
+            List<TypeOfFood> typeOfFoods = new List<TypeOfFood>
+            {
+                new TypeOfFood
+                {
+                    Title = "BB",
+                    Description = "qwerty",
+                    Hotel = hotels[0]
+                },
+                new TypeOfFood
+                {
+                    Title = "FB",
+                    Description = "qwerty",
+                    Hotel = hotels[1]
+                },
+                new TypeOfFood
+                {
+                    Title = "BBPlus",
+                    Description = "qwerty",
+                    Hotel = hotels[2]
+                }
+            };
 
             List<Tour> tours = new List<Tour>
             {
@@ -101,6 +118,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 }                
             };
 
+            context.TypeOfFoods.AddRange(typeOfFoods);
             context.Tours.AddRange(tours);
             context.SaveChanges();
         }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using TourOperator.Domain.Data.DomainModel.Enums;
 
 namespace TourOperator.Domain.Data.Entities
 {
@@ -16,8 +15,9 @@ namespace TourOperator.Domain.Data.Entities
         {
             [Required(ErrorMessage = "Поле 'Тип питания' не задано")]
             [Display(Name = "Тип питания")]
-            public TypeOfFoodEnum FoodType { get; set; }
+            public string Title { get; set; }
 
+            [Required(ErrorMessage = "Поле 'Описание' не задано")]
             [AllowHtml]
             [Display(Name = "Описание")]
             public string Description { get; set; }

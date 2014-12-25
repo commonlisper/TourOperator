@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TourOperator.Domain.Data.Entities.Hotel>
+﻿@using WebGrease.Css.Extensions
+@model IEnumerable<TourOperator.Domain.Data.Entities.Hotel>
 
 @{
     ViewBag.Title = "Отели";
@@ -30,7 +31,7 @@
             <tr>
                 <td>@hotel.Name</td>
                 <td>@hotel.Category</td>
-                <td>@hotel.TypeOfFood</td>
+                <td>@hotel.TypeOfFoods.Count</td>
                 <td>@hotel.Tours.Count</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditHotel", "Admin", new { id = hotel.Id })">Редактировать</a>

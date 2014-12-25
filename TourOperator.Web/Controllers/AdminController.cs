@@ -93,7 +93,6 @@ namespace TourOperator.Web.Controllers
 
         #endregion
 
-
         #region Tours
 
         public ActionResult Tours()
@@ -211,7 +210,6 @@ namespace TourOperator.Web.Controllers
 
         #endregion
 
-
         #region HealthResorts
 
         public ActionResult HealthResorts()
@@ -288,7 +286,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Hotels()
         {
-            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours").OrderBy(h => h.Name));
+            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours, TypeOfFoods").OrderBy(h => h.Name));
         }
 
         public ActionResult AddHotel()
@@ -346,17 +344,26 @@ namespace TourOperator.Web.Controllers
 
         #endregion
 
-
         #region TypeOfFoods
 
         public ActionResult TypeOfFoods()
         {
-            return View(_unitOfWork.TypeOfFoodRepository.Get());
+            return View(_unitOfWork.TypeOfFoodRepository.Get(includeProperties:"Hotel"));
         }        
 
         public ActionResult AddTypeOfFood()
         {
             return View();
+        }        
+
+        public ActionResult EditTypeOfFood(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult RemoveTypeOfFood(Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

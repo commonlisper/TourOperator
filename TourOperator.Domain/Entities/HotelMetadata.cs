@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using TourOperator.Domain.Data.DomainModel.Enums;
 
 namespace TourOperator.Domain.Data.Entities
 {
@@ -24,10 +23,6 @@ namespace TourOperator.Domain.Data.Entities
             [Display(Name = "Категория отеля")]
             [Range(1, 5)]
             public int? Category { get; set; }
-
-            [Required(ErrorMessage = "Поле 'Тип питания' не задано")]
-            [Display(Name = "Тип питания")]
-            public TypeOfFoodEnum TypeOfFood { get; set; }
 
             [AllowHtml]
             [Display(Name = "Описание отеля")]

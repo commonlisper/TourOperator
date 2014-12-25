@@ -21,14 +21,21 @@
         <tr>
             <td>Тип питания</td>
             <td>Описание</td>
+            <td>Отель</td>
+            <td>Команды</td>
         </tr>
     </thead>
     <tbody>
         @foreach (TypeOfFood food in Model)
         {
             <tr>
-                <td>@food.FoodType.ToString()</td>
-                <td>@(food.Description.Substring(0, 50) + "...")</td>
+                <td>@food.Title</td>
+                <td>@(food.Description.Substring(0, (food.Description.Length > 50 ? 50 : food.Description.Length)) + "...")</td>
+                <td>@food.Title</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("EditTypeOfFood", "Admin", new { id = food.Id })">Редактировать</a>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveTypeOfFood", "Admin", new { id = food.Id })">Удалить</a>
+                </td>
             </tr>
         }
     </tbody>
