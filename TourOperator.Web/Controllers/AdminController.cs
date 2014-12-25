@@ -135,7 +135,7 @@ namespace TourOperator.Web.Controllers
             {
                 tourViewModel.Tour.CountryId = tourViewModel.SelectedCountryId;
                 tourViewModel.Tour.HealthResortId = tourViewModel.SelecterHealthResortId;
-                tourViewModel.Tour.HotelId = tourViewModel.SelectedHotelId;                  
+                tourViewModel.Tour.HotelId = tourViewModel.SelectedHotelId;
 
                 _unitOfWork.TourRepository.Insert(tourViewModel.Tour);
                 _unitOfWork.Save();
@@ -183,7 +183,7 @@ namespace TourOperator.Web.Controllers
             {
                 tourViewModel.Tour.CountryId = tourViewModel.SelectedCountryId;
                 tourViewModel.Tour.HealthResortId = tourViewModel.SelecterHealthResortId;
-                tourViewModel.Tour.HotelId = tourViewModel.SelectedHotelId;              
+                tourViewModel.Tour.HotelId = tourViewModel.SelectedHotelId;
 
                 _unitOfWork.TourRepository.Update(tourViewModel.Tour);
                 _unitOfWork.Save();
@@ -348,22 +348,54 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult TypeOfFoods()
         {
-            return View(_unitOfWork.TypeOfFoodRepository.Get(includeProperties:"Hotel"));
-        }        
+            return View(_unitOfWork.TypeOfFoodRepository.Get(includeProperties: "Hotel"));
+        }
 
         public ActionResult AddTypeOfFood()
         {
             return View();
-        }        
+        }
+
+        [HttpPost]
+        public ActionResult AddTypeOfFood(TypeOfFood newTypeOfFood)
+        {
+            TypeOfFood.Validate(newTypeOfFood, ModelState);
+
+            if (!ModelState.IsValid) return View(newTypeOfFood);
+
+            _unitOfWork.TypeOfFoodRepository.Insert(newTypeOfFood);
+            _unitOfWork.Save();
+
+            return RedirectToAction("TypeOfFoods");
+        }
 
         public ActionResult EditTypeOfFood(Guid id)
         {
-            throw new NotImplementedException();
+            return View(_unitOfWork.TypeOfFoodRepository.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditTypeOfFood(TypeOfFood typeOfFoodToUpdate)
+        {
+            TypeOfFood.Validate(typeOfFoodToUpdate, ModelState);
+
+            if (!ModelState.IsValid) return View(typeOfFoodToUpdate);
+
+            _unitOfWork.TypeOfFoodRepository.Insert(typeOfFoodToUpdate);
+            _unitOfWork.Save();
+
+            return RedirectToAction("TypeOfFoods");
         }
 
         public ActionResult RemoveTypeOfFood(Guid id)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.TypeOfFoodRepository.Delete(id);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction("TypeOfFoods");
         }
 
         #endregion

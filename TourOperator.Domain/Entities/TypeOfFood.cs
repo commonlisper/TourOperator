@@ -12,7 +12,7 @@ namespace TourOperator.Domain.Data.Entities
         public string Title { get; set; }    
         public string Description { get; set; }
 
-        public Guid HotelId { get; set; }
+        public Guid? HotelId { get; set; }
         public virtual Hotel Hotel { get; set; }
     }
 }

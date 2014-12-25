@@ -14,13 +14,31 @@ namespace TourOperator.Domain.Data.Entities
         public class TypeOfFoodMetadata
         {
             [Required(ErrorMessage = "Поле 'Тип питания' не задано")]
-            [Display(Name = "Тип питания")]
+            [Display(Name = "Тип питания")]            
             public string Title { get; set; }
 
             [Required(ErrorMessage = "Поле 'Описание' не задано")]
             [AllowHtml]
-            [Display(Name = "Описание")]
+            [Display(Name = "Описание")]            
             public string Description { get; set; }
+        }
+
+        public static void Validate(TypeOfFood typeOfFoodToValidate, ModelStateDictionary modelState)
+        {
+            if (String.IsNullOrEmpty(typeOfFoodToValidate.Title))
+            {
+                modelState.AddModelError("Title", "Поле 'Тип питания' не задано");
+            }
+
+            if (typeOfFoodToValidate.Title.Length < 2)
+            {
+                modelState.AddModelError("Title", "Поле 'Тип питания' должно быть более 1 символа");
+            }
+
+            if (string.IsNullOrEmpty(typeOfFoodToValidate.Description))
+            {
+                modelState.AddModelError("Description", "Поле 'Описание' не задано");
+            }
         }
     }
 }

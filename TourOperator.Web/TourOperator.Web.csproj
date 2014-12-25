@@ -377,6 +377,7 @@
     <Content Include="Views\Admin\TypeOfFoods.cshtml" />
     <Content Include="Views\Admin\AddTypeOfFood.cshtml" />
     <Content Include="Views\Shared\_TinyMCE.cshtml" />
+    <Content Include="Views\Admin\EditTypeOfFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
