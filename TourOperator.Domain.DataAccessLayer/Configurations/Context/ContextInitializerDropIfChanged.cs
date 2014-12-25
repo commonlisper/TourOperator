@@ -44,51 +44,52 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 }                
             };
 
-            List<Hotel> hotels = new List<Hotel>
-            {
-                new Hotel
-                {
-                    Name = "PENSION HOCHWIMMER",
-                    Category = 4                    
-                },
-                new Hotel
-                {
-                    Name = "HUBERTUSHOF HOTEL",
-                    Category = 3
-                },
-                new Hotel
-                {
-                    Name = "ANTONIUS HOTEL",
-                    Category = 4
-                }
-            };
-
-            context.Countries.AddRange(countries);
-            context.HealthResorts.AddRange(healthResorts);
-            context.Hotels.AddRange(hotels);
-            context.SaveChanges();
-
             List<TypeOfFood> typeOfFoods = new List<TypeOfFood>
             {
                 new TypeOfFood
                 {
                     Title = "BB",
-                    Description = "qwerty",
-                    Hotel = hotels[0]
+                    Description = "qwerty",                  
                 },
                 new TypeOfFood
                 {
                     Title = "FB",
                     Description = "qwerty",
-                    Hotel = hotels[1]
                 },
                 new TypeOfFood
                 {
                     Title = "BBPlus",
                     Description = "qwerty",
-                    Hotel = hotels[2]
                 }
             };
+
+            List<Hotel> hotels = new List<Hotel>
+            {
+                new Hotel
+                {
+                    Name = "PENSION HOCHWIMMER",
+                    Category = 4,
+                    TypeOfFood = typeOfFoods[0]
+                },
+                new Hotel
+                {
+                    Name = "HUBERTUSHOF HOTEL",
+                    Category = 3,
+                    TypeOfFood = typeOfFoods[1]
+                },
+                new Hotel
+                {
+                    Name = "ANTONIUS HOTEL",
+                    Category = 4,
+                    TypeOfFood = typeOfFoods[2]
+                }
+            };
+
+            context.Countries.AddRange(countries);
+            context.HealthResorts.AddRange(healthResorts);
+            context.TypeOfFoods.AddRange(typeOfFoods);
+            context.Hotels.AddRange(hotels);
+            context.SaveChanges();
 
             List<Tour> tours = new List<Tour>
             {
@@ -118,7 +119,6 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Context
                 }                
             };
 
-            context.TypeOfFoods.AddRange(typeOfFoods);
             context.Tours.AddRange(tours);
             context.SaveChanges();
         }

@@ -1,5 +1,5 @@
-﻿@using TourOperator.Web.Helpers
-@model TourOperator.Domain.Data.Entities.Hotel
+﻿@using TourOperator.Web.Models.ViewModels
+@model TourOperator.Web.Models.ViewModels.HotelViewModel
 
 @{
     ViewBag.Title = "Добавить Отель";
@@ -10,25 +10,25 @@
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.LabelFor(model => model.Hotel.Name, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Hotel.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Category, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
+        @Html.LabelFor(model => model.Hotel.Category, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Hotel.Category, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.TypeOfFood, new { @class = "col-sm-2" })
-        @Html.DropDownListForEnum(model => model.TypeOfFood, new { @class = "form-control" })
+        @Html.LabelFor(model => model.SelectedTypeOfFoodId, new { @class = "col-sm-2" })
+        @Html.DropDownListFor(model => model.SelectedTypeOfFoodId, new SelectList(Model.TypeOfFoods, "Value", "Text", Model.SelectedTypeOfFoodId), new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2" })
+        @Html.LabelFor(model => model.Hotel.Description, new { @class = "col-sm-2" })
     </div>
     <div class="form-group">
-        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.TextAreaFor(model => model.Hotel.Description, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -37,4 +37,7 @@
     <button class="btn btn-primary" type="submit">Добавить</button>
 </form>
 
-@Html.Partial("_TinyMCE")
+@section scripts
+{
+    @Html.Partial("_TinyMCE", new TinyMceViewModel { Id = "#Hotel_Description" })
+}

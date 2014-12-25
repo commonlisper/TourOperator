@@ -7,8 +7,7 @@ namespace TourOperator.Domain.Data.Entities
     {
         public Hotel()
         {
-            Tours = new HashSet<Tour>();
-            TypeOfFoods = new HashSet<TypeOfFood>();
+            Tours = new HashSet<Tour>();            
         }
 
         public Guid Id { get; set; }
@@ -18,6 +17,6 @@ namespace TourOperator.Domain.Data.Entities
         public byte[] TimestampBytes { get; set; }
 
         public virtual ICollection<Tour> Tours { get; set; }        
-        public virtual ICollection<TypeOfFood> TypeOfFoods { get; set; }
+        public virtual TypeOfFood TypeOfFood { get; set; }
     }
 }

@@ -286,49 +286,78 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Hotels()
         {
-            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours, TypeOfFoods").OrderBy(h => h.Name));
+            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours, TypeOfFood").OrderBy(h => h.Name));
         }
 
         public ActionResult AddHotel()
         {
-            return View();
+            HotelViewModel viewModel = new HotelViewModel
+            {
+                TypeOfFoods = GetTypeOfFoodsAsSelectList()
+            };
+
+            return View(viewModel);
+        }
+
+        private IEnumerable<SelectListItem> GetTypeOfFoodsAsSelectList()
+        {
+            return
+                _unitOfWork.TypeOfFoodRepository.Get()
+                    .Select(tof => new SelectListItem { Value = tof.Id.ToString(), Text = tof.Title });
         }
 
         [HttpPost]
-        public ActionResult AddHotel(Hotel newHotel)
+        public ActionResult AddHotel(HotelViewModel hotelViewModel)
         {
-            Hotel.Validate(newHotel, ModelState);
+            Hotel.Validate(hotelViewModel.Hotel, ModelState);
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.HotelRepository.Insert(newHotel);
+                TypeOfFood typeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
+                hotelViewModel.Hotel.TypeOfFood = typeOfFood;
+
+                _unitOfWork.HotelRepository.Insert(hotelViewModel.Hotel);
                 _unitOfWork.Save();
 
                 return RedirectToAction("Hotels");
             }
 
-            return View(newHotel);
+            hotelViewModel.TypeOfFoods = GetHotelsAsSelectList();
+            return View(hotelViewModel);
         }
 
         public ActionResult EditHotel(Guid id)
         {
-            return View(_unitOfWork.HotelRepository.Find(id));
+            Hotel hotel = _unitOfWork.HotelRepository.Find(id);
+
+            HotelViewModel viewModel = new HotelViewModel
+            {
+                Hotel = hotel,
+                TypeOfFoods = GetTypeOfFoodsAsSelectList(),                
+                SelectedTypeOfFoodId = hotel.TypeOfFood.Id
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult EditHotel(Hotel hotelToUpdate)
+        public ActionResult EditHotel(HotelViewModel hotelViewModel)
         {
-            Hotel.Validate(hotelToUpdate, ModelState);
+            Hotel.Validate(hotelViewModel.Hotel, ModelState);
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.HotelRepository.Update(hotelToUpdate);
+                TypeOfFood typeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
+                hotelViewModel.Hotel.TypeOfFood = typeOfFood;
+
+                _unitOfWork.HotelRepository.Update(hotelViewModel.Hotel);
                 _unitOfWork.Save();
 
                 return RedirectToAction("Hotels");
             }
 
-            return View(hotelToUpdate);
+            hotelViewModel.TypeOfFoods = GetHotelsAsSelectList();
+            return View(hotelViewModel);
         }
 
         public ActionResult RemoveHotel(Guid id)
@@ -348,7 +377,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult TypeOfFoods()
         {
-            return View(_unitOfWork.TypeOfFoodRepository.Get(includeProperties: "Hotel"));
+            return View(_unitOfWork.TypeOfFoodRepository.Get());
         }
 
         public ActionResult AddTypeOfFood()

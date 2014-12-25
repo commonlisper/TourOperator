@@ -20,7 +20,6 @@
     <thead>
         <tr>
             <td>Тип питания</td>            
-            <td>Отель</td>
             <td>Команды</td>
         </tr>
     </thead>
@@ -29,7 +28,6 @@
         {
             <tr>
                 <td>@food.Title</td>                
-                <td>@(food.Hotel != null ? food.Hotel.Name : "")</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditTypeOfFood", "Admin", new { id = food.Id })">Редактировать</a>
                     <a class="btn btn-danger" href="@Url.Action("RemoveTypeOfFood", "Admin", new { id = food.Id })">Удалить</a>

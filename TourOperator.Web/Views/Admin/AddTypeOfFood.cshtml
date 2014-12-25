@@ -1,4 +1,4 @@
-﻿@using TourOperator.Web.Helpers
+﻿@using TourOperator.Web.Models.ViewModels
 @model TourOperator.Domain.Data.Entities.TypeOfFood
 
 @{
@@ -30,6 +30,6 @@
 
 @section scripts
 {
-    @Html.Partial("_TinyMCE")
+    @Html.Partial("_TinyMCE", new TinyMceViewModel { Id = "#Description" })
 }
 

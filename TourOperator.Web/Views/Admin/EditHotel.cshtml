@@ -1,5 +1,5 @@
-﻿@using TourOperator.Web.Helpers
-@model TourOperator.Domain.Data.Entities.Hotel
+﻿@using TourOperator.Web.Models.ViewModels
+@model HotelViewModel
 
 @{
     ViewBag.Title = "Редактировать Отель";
@@ -9,26 +9,27 @@
 <h2>@ViewBag.Title</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    @Html.HiddenFor(model=>model.Hotel.Id)
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.LabelFor(model => model.Hotel.Name, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Hotel.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Category, new { @class = "col-sm-2" })
-        @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
+        @Html.LabelFor(model => model.Hotel.Category, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Hotel.Category, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.TypeOfFood, new { @class = "col-sm-2" })
-        @Html.DropDownListForEnum(model => model.TypeOfFood, new { @class = "form-control" })
+        @Html.LabelFor(model => model.SelectedTypeOfFoodId, new { @class = "col-sm-2" })
+        @Html.DropDownListFor(model => model.SelectedTypeOfFoodId, new SelectList(Model.TypeOfFoods, "Value", "Text", Model.SelectedTypeOfFoodId), new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2" })
+        @Html.LabelFor(model => model.Hotel.Description, new { @class = "col-sm-2" })
     </div>
     <div class="form-group">
-        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.TextAreaFor(model => model.Hotel.Description, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -39,26 +40,5 @@
 
 @section scripts
 {
-    <script>
-        tinymce.init({
-            selector: "#Description",
-            plugins: [
-                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                "save table contextmenu directionality emoticons template paste textcolor"
-            ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
-            style_formats: [
-                { title: 'Bold text', inline: 'b' },
-                { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
-                { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
-                { title: 'Example 1', inline: 'span', classes: 'example1' },
-                { title: 'Example 2', inline: 'span', classes: 'example2' },
-                { title: 'Table styles' },
-                { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
-            ],
-            language: 'ru',
-            height: 450
-        });
-    </script>
+    @Html.Partial("_TinyMCE", new TinyMceViewModel { Id = "#Hotel_Description" })
 }
