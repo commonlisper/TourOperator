@@ -20,7 +20,7 @@ namespace TourOperator.Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
+        private IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
 
         public ActionResult Index()
         {
