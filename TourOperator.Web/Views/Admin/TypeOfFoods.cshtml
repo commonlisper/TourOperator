@@ -19,7 +19,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <td>Тип питания</td>            
+            <td>Тип питания</td>
             <td>Команды</td>
         </tr>
     </thead>
@@ -27,10 +27,18 @@
         @foreach (TypeOfFood food in Model)
         {
             <tr>
-                <td>@food.Title</td>                
+                <td>@food.Title</td>
                 <td>
                     <a class="btn btn-primary" href="@Url.Action("EditTypeOfFood", "Admin", new { id = food.Id })">Редактировать</a>
-                    <a class="btn btn-danger" href="@Url.Action("RemoveTypeOfFood", "Admin", new { id = food.Id })">Удалить</a>
+
+                    @if (food.CanRemove)
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("RemoveTypeOfFood", "Admin", new { id = food.Id })">Удалить</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-default disabled" href="@Url.Action("RemoveTypeOfFood", "Admin", new { id = food.Id })">Удалить</a>
+                    }
                 </td>
             </tr>
         }

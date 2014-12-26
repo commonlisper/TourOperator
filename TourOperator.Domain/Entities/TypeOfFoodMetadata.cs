@@ -20,8 +20,10 @@ namespace TourOperator.Domain.Data.Entities
             [Required(ErrorMessage = "Поле 'Описание' не задано")]
             [AllowHtml]
             [Display(Name = "Описание")]            
-            public string Description { get; set; }
+            public string Description { get; set; }                       
         }
+
+        public bool CanRemove { get; set; }
 
         public static void Validate(TypeOfFood typeOfFoodToValidate, ModelStateDictionary modelState)
         {

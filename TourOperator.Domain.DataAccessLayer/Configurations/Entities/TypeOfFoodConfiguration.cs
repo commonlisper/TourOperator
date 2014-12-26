@@ -16,6 +16,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(t => t.Title).IsRequired();
             Property(t => t.Description).IsRequired().HasColumnType("varchar(max)");
+            Property(t => t.CanRemove).IsOptional();
         }
     }
 }

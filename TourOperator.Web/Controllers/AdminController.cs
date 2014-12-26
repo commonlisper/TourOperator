@@ -13,6 +13,7 @@ using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 using TourOperator.Domain.DataAccessLayer.Repositories;
 using TourOperator.Web.Models.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace TourOperator.Web.Controllers
 {
@@ -333,7 +334,7 @@ namespace TourOperator.Web.Controllers
             HotelViewModel viewModel = new HotelViewModel
             {
                 Hotel = hotel,
-                TypeOfFoods = GetTypeOfFoodsAsSelectList(),                
+                TypeOfFoods = GetTypeOfFoodsAsSelectList(),
                 SelectedTypeOfFoodId = hotel.TypeOfFood.Id
             };
 
@@ -377,7 +378,15 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult TypeOfFoods()
         {
-            return View(_unitOfWork.TypeOfFoodRepository.Get());
+            IEnumerable<Hotel> hotels = _unitOfWork.HotelRepository.Get();
+            IEnumerable<TypeOfFood> foods = _unitOfWork.TypeOfFoodRepository.Get();
+
+            foods.ForEach(tof =>
+            {
+                tof.CanRemove = hotels.All(h => h.TypeOfFood.Id != tof.Id);
+            });
+
+            return View(foods);
         }
 
         public ActionResult AddTypeOfFood()
