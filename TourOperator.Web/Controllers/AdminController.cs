@@ -20,7 +20,7 @@ namespace TourOperator.Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
+        private readonly IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
 
         public ActionResult Index()
         {
@@ -348,9 +348,9 @@ namespace TourOperator.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                TypeOfFood typeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
-                hotelViewModel.Hotel.TypeOfFood = typeOfFood;
-
+                hotelViewModel.Hotel = _unitOfWork.HotelRepository.Find(hotelViewModel.Hotel.Id);
+                hotelViewModel.Hotel.TypeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
+                
                 _unitOfWork.HotelRepository.Update(hotelViewModel.Hotel);
                 _unitOfWork.Save();
 
