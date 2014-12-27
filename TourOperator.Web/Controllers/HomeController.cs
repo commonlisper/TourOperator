@@ -10,10 +10,7 @@ namespace TourOperator.Web.Controllers
     public class HomeController : Controller
     {      
         public ActionResult Index()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork(new DomainDbContext());
-            var countries = unitOfWork.CountryRepository.Get();
-
+        {          
             return View();
         }
 

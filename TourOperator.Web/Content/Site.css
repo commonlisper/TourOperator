@@ -48,3 +48,8 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* common styles */
+header {
+    height: 200px;
+}
