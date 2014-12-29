@@ -26,7 +26,7 @@
                     <td>@tour.Price.ToString("C0")</td>
                     <td>@tour.Nights</td>
                     <td>@tour.HealthResort.Name</td>
-                    <td>@tour.Hotel.Name</td>
+                    <td><a href="@Url.Action("Details", "Hotel", new { id = tour.HotelId })">@tour.Hotel.Name</a></td>
                     <td>@tour.Hotel.Category</td>
                     <td><a href="@Url.Action("Details", "TypeOfFood", new { id = tour.Hotel.TypeOfFood.Id })">@tour.Hotel.TypeOfFood.Title</a></td>
                 </tr>
