@@ -1,4 +1,5 @@
-﻿@using TourOperator.Web.Helpers
+﻿@using System.Runtime.InteropServices
+@using TourOperator.Web.Helpers
 
 <!DOCTYPE html>
 <html>
@@ -54,8 +55,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery-ui")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/tinymce")
+    @Scripts.Render("~/bundles/bootstrap")    
+    <script src="http://cdn.ckeditor.com/4.4.6/full/ckeditor.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

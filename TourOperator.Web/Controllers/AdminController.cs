@@ -436,7 +436,7 @@ namespace TourOperator.Web.Controllers
 
             if (!ModelState.IsValid) return View(typeOfFoodToUpdate);
 
-            _unitOfWork.TypeOfFoodRepository.Insert(typeOfFoodToUpdate);
+            _unitOfWork.TypeOfFoodRepository.Update(typeOfFoodToUpdate);
             _unitOfWork.Save();
 
             return RedirectToAction("TypeOfFoods");

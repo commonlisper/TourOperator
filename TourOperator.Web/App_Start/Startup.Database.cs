@@ -9,7 +9,7 @@ namespace TourOperator.Web
         {
             // TODO: change in production!
             //Database.SetInitializer(new ContexInitializerDropAlways());
-            Database.SetInitializer(new ContextInitializerDropIfChanged());
+            //Database.SetInitializer(new ContextInitializerDropIfChanged());
         }
     }
 }
