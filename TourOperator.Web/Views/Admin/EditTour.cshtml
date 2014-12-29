@@ -8,7 +8,8 @@
 <h2>@ViewBag.Title</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
-    @Html.HiddenFor(model=>model.Tour.Id)
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Tour.Id)
     @Html.HiddenFor(model => model.Tour.CountryId)
     @Html.HiddenFor(model => model.Tour.HealthResortId)
     @Html.HiddenFor(model => model.Tour.HotelId)

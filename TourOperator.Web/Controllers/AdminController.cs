@@ -40,6 +40,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddCountry(Country newCountry)
         {
             Country.Validate(newCountry, ModelState);
@@ -66,6 +67,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditCountry(Country updatedCoutry)
         {
             Country.Validate(updatedCoutry, ModelState);
@@ -128,6 +130,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddTour(TourViewModel tourViewModel)
         {
             Tour.Validate(tourViewModel.Tour, ModelState);
@@ -176,6 +179,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditTour(TourViewModel tourViewModel)
         {
             Tour.Validate(tourViewModel.Tour, ModelState);
@@ -224,6 +228,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddHealthResort(HealthResort newHealthResort)
         {
             HealthResort.Validate(newHealthResort, ModelState);
@@ -250,6 +255,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditHealthResort(HealthResort healthResortToUpdate)
         {
             HealthResort.Validate(healthResortToUpdate, ModelState);
@@ -308,6 +314,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddHotel(HotelViewModel hotelViewModel)
         {
             Hotel.Validate(hotelViewModel.Hotel, ModelState);
@@ -342,6 +349,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditHotel(HotelViewModel hotelViewModel)
         {
             Hotel.Validate(hotelViewModel.Hotel, ModelState);
@@ -350,7 +358,7 @@ namespace TourOperator.Web.Controllers
             {
                 hotelViewModel.Hotel = _unitOfWork.HotelRepository.Find(hotelViewModel.Hotel.Id);
                 hotelViewModel.Hotel.TypeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
-                
+
                 _unitOfWork.HotelRepository.Update(hotelViewModel.Hotel);
                 _unitOfWork.Save();
 
@@ -395,6 +403,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddTypeOfFood(TypeOfFood newTypeOfFood)
         {
             TypeOfFood.Validate(newTypeOfFood, ModelState);
@@ -413,6 +422,7 @@ namespace TourOperator.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditTypeOfFood(TypeOfFood typeOfFoodToUpdate)
         {
             TypeOfFood.Validate(typeOfFoodToUpdate, ModelState);

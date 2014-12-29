@@ -8,6 +8,8 @@
 <h2>@ViewBag.Title</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
     <div class="form-group">
         @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
         @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
@@ -24,7 +26,7 @@
         @Html.ValidationSummary()
     </div>
 
-    <button class="btn btn-primary" type="submit">Добавить</button>
+    <button class="btn btn-primary" type="submit">Обновить</button>
 </form>
 
 @section scripts

@@ -8,6 +8,7 @@
 <h2>@ViewBag.Title</h2>
 
 <form class="form-horizontal" role="form" action="@Url.Action()" method="POST">
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })

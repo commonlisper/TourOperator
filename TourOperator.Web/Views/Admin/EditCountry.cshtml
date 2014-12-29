@@ -8,9 +8,11 @@
 <h2>@ViewBag.Title</h2>
 
 <form role="form" method="POST" action="@Url.Action()">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
     <div class="form-group">
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name)
+        @Html.LabelFor(model => model.Name, new { @class = "col-sm-2" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Name)
     </div>
 
