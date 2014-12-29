@@ -28,7 +28,7 @@
                     <td>@tour.HealthResort.Name</td>
                     <td>@tour.Hotel.Name</td>
                     <td>@tour.Hotel.Category</td>
-                    <td>@tour.Hotel.TypeOfFood.Title</td>
+                    <td><a href="@Url.Action("Details", "TypeOfFood", new { id = tour.Hotel.TypeOfFood.Id })">@tour.Hotel.TypeOfFood.Title</a></td>
                 </tr>
             }
         </tbody>

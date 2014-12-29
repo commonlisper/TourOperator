@@ -10,7 +10,7 @@
             @foreach (Country country in Model)
             {
                 <li class="@Html.MenuActive("CountryDetails", "Home")">
-                    <a href="@Url.Action("CountryDetails", "Home", new { id = country.Id })">@country.Name</a>
+                    <a href="@Url.Action("Details", "Country", new { id = country.Id })">@country.Name</a>
                 </li>
             }
         </ul>

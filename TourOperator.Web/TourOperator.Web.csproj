@@ -166,8 +166,10 @@
     <Compile Include="App_Start\Startup.Database.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TypeOfFoodController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -385,7 +387,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_LeftCountiesMenu.cshtml" />
-    <Content Include="Views\Home\CountryDetails.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\TypeOfFood\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

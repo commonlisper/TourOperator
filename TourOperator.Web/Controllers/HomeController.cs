@@ -30,17 +30,6 @@ namespace TourOperator.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public ActionResult CountryDetails(Guid id)
-        {
-            CountryDetailsViewModel viewModel = new CountryDetailsViewModel()
-            {
-                Country = _unitOfWork.CountryRepository.Find(id),
-                Countries = _unitOfWork.CountryRepository.Get()
-            };
-
-            return View(viewModel);
-        }
+        }       
     }
 }
