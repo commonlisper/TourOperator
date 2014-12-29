@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
+using TourOperator.Web.Models.ViewModels;
 
 namespace TourOperator.Web.Controllers
 {
@@ -13,7 +14,7 @@ namespace TourOperator.Web.Controllers
         private readonly IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
 
         public ActionResult Index()
-        {          
+        {
             return View(_unitOfWork.CountryRepository.Get());
         }
 
@@ -33,7 +34,13 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult CountryDetails(Guid id)
         {
-            return View();
+            CountryDetailsViewModel viewModel = new CountryDetailsViewModel()
+            {
+                Country = _unitOfWork.CountryRepository.Find(id),
+                Countries = _unitOfWork.CountryRepository.Get()
+            };
+
+            return View(viewModel);
         }
     }
 }

@@ -11,8 +11,10 @@
 <body>
     <div class="container body-content">
         @Html.Partial("_Header")
-        @Html.Partial("_Navigation")        
-        @RenderBody()
+        @Html.Partial("_Navigation")
+        <div class="row">
+            @RenderBody()
+        </div>
         <hr />
         @Html.Partial("_Footer")
     </div>
