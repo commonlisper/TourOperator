@@ -1,0 +1,20 @@
+﻿@using TourOperator.Domain.Data.Entities
+@model IEnumerable<Country>
+
+<div class="row">
+    @if (Model != null)
+    {
+        <div class="col-md-3">
+
+            <ul class="nav nav-stacked">
+                @foreach (Country country in Model)
+                {
+                    <li>
+                        <a href="@Url.Action("CountryDetails", "Home", new { id = country.Id })">@country.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+<div class="col-md-9"></div>

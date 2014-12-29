@@ -100,7 +100,10 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Tours()
         {
-            return View(_unitOfWork.TourRepository.Get(includeProperties: "Country, HealthResort, Hotel"));
+            return
+                View(
+                    _unitOfWork.TourRepository.Get(includeProperties: "Country, HealthResort, Hotel")
+                        .GroupBy(t => t.Country.Name));
         }
 
         public ActionResult AddTour()
