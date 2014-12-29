@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TourOperator.Domain.Data.Entities.HealthResort>
+﻿@using TourOperator.Domain.Data.Entities
+@model IEnumerable<IGrouping<IEnumerable<TourOperator.Domain.Data.Entities.Tour>, TourOperator.Domain.Data.Entities.HealthResort>>
 
 @{
     ViewBag.Title = "Курорты";
@@ -19,21 +20,30 @@
     <thead>
         <tr>
             <th>Название курорта</th>
-            <th>Количество туров</th>
             <th>Команда</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var healthResort in Model)
+        @foreach (var tourGroup in Model)
         {
             <tr>
-                <td>@healthResort.Name</td>
-                <td>@healthResort.Tours.Count</td>
-                <td>
-                    <a class="btn btn-primary" href="@Url.Action("EditHealthResort", "Admin", new { id = @healthResort.Id })">Редактировать</a>
-                    <a class="btn btn-danger" href="@Url.Action("RemoveHealthResort", "Admin", new { id = @healthResort.Id })">Удалить</a>
+                <td colspan="3">
+                    <h4>
+                        <strong>Количество туров: @tourGroup.Key.Count()</strong>
+                    </h4>
                 </td>
             </tr>
+            
+            foreach (var healthResort in tourGroup)
+            {
+                <tr>
+                    <td>@healthResort.Name</td>
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("EditHealthResort", "Admin", new { id = @healthResort.Id })">Редактировать</a>
+                        <a class="btn btn-danger" href="@Url.Action("RemoveHealthResort", "Admin", new { id = @healthResort.Id })">Удалить</a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

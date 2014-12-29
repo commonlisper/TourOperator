@@ -222,7 +222,7 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult HealthResorts()
         {
-            return View(_unitOfWork.HealthResortRepository.Get(includeProperties: "Tours"));
+            return View(_unitOfWork.HealthResortRepository.Get(includeProperties: "Tours").GroupBy(hr => hr.Tours));
         }
 
         public ActionResult AddHealthResort()
@@ -296,7 +296,11 @@ namespace TourOperator.Web.Controllers
 
         public ActionResult Hotels()
         {
-            return View(_unitOfWork.HotelRepository.Get(includeProperties: "Tours, TypeOfFood").OrderBy(h => h.Name));
+            return
+                View(
+                    _unitOfWork.HotelRepository.Get(includeProperties: "Tours, TypeOfFood")
+                        .OrderBy(h => h.Name)
+                        .GroupBy(h => h.Tours));
         }
 
         public ActionResult AddHotel()
