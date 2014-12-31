@@ -1,18 +1,33 @@
 ﻿@using TourOperator.Domain.Data.Entities
-@using TourOperator.Web.Helpers
 @model IEnumerable<Country>
 
 @if (Model != null)
 {
-    <div class="col-md-3">
-
-        <ul class="nav nav-stacked">
-            @foreach (Country country in Model)
-            {
-                <li class="@Html.MenuActive("CountryDetails", "Home")">
-                    <a href="@Url.Action("Details", "Country", new { id = country.Id })">@country.Name</a>
-                </li>
-            }
-        </ul>
+    <div id="sidebar" class="4u">
+        <section>
+            <header class="major">
+                <h2>Страны</h2>
+            </header>
+            <ul class="default">
+                @foreach (Country country in Model)
+                {
+                    <li><a href="@Url.Action("Details", "Country", new { id = country.Id })">@country.Name</a></li>
+                }
+            </ul>
+        </section>
+        @*<section>
+            <header class="major">
+                <h2>Mauris vulputate</h2>
+            </header>
+            <ul class="default">
+                <li><a href="#">Pellentesque lectus gravida blandit</a></li>
+                <li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+                <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+                <li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+                <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+            </ul>
+        </section>*@
     </div>
 }
