@@ -1,4 +1,4 @@
-﻿@using System.Runtime.InteropServices
+﻿@using System.Threading
 @using TourOperator.Web.Helpers
 
 <!DOCTYPE html>
@@ -54,10 +54,35 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/globalize")
+    <script>
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) ||
+                !isNaN(Globalize.parseFloat(value));
+        }
+
+        $(document).ready(function () {
+            Globalize.culture("@Thread.CurrentThread.CurrentCulture.Name");
+        });
+
+        jQuery.extend(jQuery.validator.methods, {
+            range: function (value, element, param) {
+                //Use the Globalization plugin to parse the value
+                var val = Globalize.parseFloat(value);
+                return this.optional(element) || (
+                    val >= param[0] && val <= param[1]);
+            }
+        });
+
+        $.validator.methods.date = function (value, element) {
+            return this.optional(element) ||
+                Globalize.parseDate(value) ||
+                Globalize.parseDate(value, "yyyy-MM-dd");
+        }
+    </script>
     @Scripts.Render("~/bundles/jquery-ui")
-    @Scripts.Render("~/bundles/bootstrap")    
+    @Scripts.Render("~/bundles/bootstrap")
     <script src="http://cdn.ckeditor.com/4.4.6/full/ckeditor.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
