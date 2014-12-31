@@ -38,9 +38,16 @@
                 <!-- Sidebar -->
                 @if (Model != null)
                 {
-                    @(Model.GetType().GetProperty("Countries") != null
+                    try
+                    {
+                        @(Model.GetType().GetProperty("Countries") != null
                         ? Html.Partial("_LeftCountiesMenu", Model.Countries as IEnumerable<Country>)
                         : Html.Partial("_LeftCountiesMenu", Model as IEnumerable<Country>))
+                    }
+                    catch (Exception ex)
+                    {
+                        @Html.Partial("_LeftCountiesMenu", new List<Country>())
+                    }
                 }
 
                 <!-- Content -->

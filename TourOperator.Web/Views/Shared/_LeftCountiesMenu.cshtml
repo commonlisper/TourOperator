@@ -1,7 +1,7 @@
 ﻿@using TourOperator.Domain.Data.Entities
 @model IEnumerable<Country>
 
-@if (Model != null)
+@if (Model != null && Model.Any())
 {
     <div id="sidebar" class="4u">
         <section>
