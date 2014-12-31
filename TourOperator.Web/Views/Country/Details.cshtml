@@ -5,32 +5,28 @@
     ViewBag.Title = "Туры в " + Model.Country.Name;
 }
 
-@Html.Partial("_LeftCountiesMenu", Model.Countries)
-
-<div class="col-md-9">
-    <table class="table table-bordered">
-        <thead>
+<table class="flat-table">
+    <thead>
+        <tr>
+            <th>Цена тура</th>
+            <th>Ночей</th>
+            <th>Курорт</th>
+            <th>Отель</th>
+            <th>Категория отеля</th>
+            <th>Тип питания</th>
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+        @foreach (Tour tour in Model.Country.Tours)
+        {
             <tr>
-                <th>Цена тура</th>
-                <th>Ночей</th>
-                <th>Курорт</th>
-                <th>Отель</th>
-                <th>Категория отеля</th>
-                <th>Тип питания</th>
+                <td>@tour.Price.ToString("C0")</td>
+                <td>@tour.Nights</td>
+                <td>@tour.HealthResort.Name</td>
+                <td><a href="@Url.Action("Details", "Hotel", new { id = tour.HotelId })">@tour.Hotel.Name</a></td>
+                <td>@tour.Hotel.Category</td>
+                <td><a href="@Url.Action("Details", "TypeOfFood", new { id = tour.Hotel.TypeOfFood.Id })">@tour.Hotel.TypeOfFood.Title</a></td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (Tour tour in Model.Country.Tours)
-            {
-                <tr>
-                    <td>@tour.Price.ToString("C0")</td>
-                    <td>@tour.Nights</td>
-                    <td>@tour.HealthResort.Name</td>
-                    <td><a href="@Url.Action("Details", "Hotel", new { id = tour.HotelId })">@tour.Hotel.Name</a></td>
-                    <td>@tour.Hotel.Category</td>
-                    <td><a href="@Url.Action("Details", "TypeOfFood", new { id = tour.Hotel.TypeOfFood.Id })">@tour.Hotel.TypeOfFood.Title</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
