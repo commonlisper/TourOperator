@@ -35,11 +35,28 @@ namespace TourOperator.Web
                 "~/Scripts/globalize/globalize.js",
                 "~/Scripts/globalize/cultures/globalize.culture." + Thread.CurrentThread.CurrentCulture.Name + ".js"));
 
+            bundles.Add(new ScriptBundle("~/bundle/solarize").Include(
+                //"~/Scripts/solarize/jquery.min.js",
+                "~/Scripts/solarize/jquery.dropotron.min.js",
+                "~/Scripts/solarize/skel.min.js",
+                "~/Scripts/solarize/skel-layers.min.js",
+                "~/Scripts/solarize/init.js"));
+
+            bundles.Add(new ScriptBundle("~/bundle/solarize/ie").Include(
+                "~/Content/solarize/ie/html5shiv.js"));
+
             // Styles
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css",
                 "~/Content/themes/base/all.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/solarize").Include(
+                "~/Content/solarize/skel.css",
+                "~/Content/solarize/style.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/solarize/ie").Include(
+                "~/Content/solarize/ie/v8.css"));
         }
     }
 }

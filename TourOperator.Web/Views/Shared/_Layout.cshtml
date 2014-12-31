@@ -1,27 +1,151 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - LightTour</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>Lighttour - @ViewBag.Title</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content=""/>
+    @Scripts.Render("~/bundles/jquery")
+    <!--[if lte IE 8]>@Scripts.Render("~/bundle/solarize/ie")<![endif]-->
+    @Scripts.Render("~/bundle/solarize")    
+    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css/solarize")
+    <!--[if lte IE 8]>@Styles.Render("~/Content/css/solarize/ie")<![endif]-->
 </head>
 <body>
-    <div class="container body-content">
-        @Html.Partial("_Header")
-        @Html.Partial("_Navigation")
-        <div class="row">
-            @RenderBody()
+    <!-- Header Wrapper -->
+    <div class="wrapper style1">
+
+        <!-- Header -->
+        <div id="header">
+            <div class="container">
+
+                <!-- Logo -->
+                <h1><a href="@Url.Action("Index", "Home")" id="logo">LightTour</a></h1>
+
+                <!-- Nav -->
+                @Html.Partial("_Navigation")
+            </div>
         </div>
-        <hr />
-        @Html.Partial("_Footer")
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    <!-- Main -->
+    <div id="main" class="wrapper style4">
+        <div class="container">
+            <div class="row">
+
+                <!-- Sidebar -->
+                <div id="sidebar" class="4u">
+                    <section>
+                        <header class="major">
+                            <h2>Etiam malesuada</h2>
+                        </header>
+                        <ul class="default">
+                            <li><a href="#">Pellentesque lectus gravida blandit</a></li>
+                            <li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+                            <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                            <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+                            <li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+                            <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                            <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <header class="major">
+                            <h2>Mauris vulputate</h2>
+                        </header>
+                        <ul class="default">
+                            <li><a href="#">Pellentesque lectus gravida blandit</a></li>
+                            <li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+                            <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                            <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+                            <li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+                            <li><a href="#">Phasellus nibh pellentesque congue</a></li>
+                            <li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Content -->
+                <div id="content" class="8u skel-cell-important">
+                    @RenderBody()
+                    <section>
+                        <header class="major">
+                            <h2>Left Sidebar</h2>
+                            <span class="byline">Nullam non wisi a sem semper eleifend</span>
+                        </header>
+                        <p>Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet at, ultrices eget, ornare et, wisi. Pellentesque adipiscing purus ac magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque pede. Donec pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis. Vestibulum sem magna, elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed blandit. Phasellus pellentesque, ante nec iaculis lobortis lorem mauris quis nunc.</p>
+                        <p>Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet at, ultrices eget, ornare et, wisi. Pellentesque adipiscing purus ac magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque pede. Donec pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis. Vestibulum sem magna, elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <p>Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet at, ultrices eget, ornare et, wisi. Pellentesque adipiscing purus ac magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque pede. Donec pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis. Vestibulum sem magna, elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Nulla facilisi. Cum sociis natoque penatibus. Sed blandit. Phasellus pellentesque.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team -->
+    <div class="wrapper style5">
+        <section id="team" class="container">
+            <header class="major">
+                <h2>Cras vitae metus aliNuam</h2>
+                <span class="byline">pulvinar mollis. Vestibulum sem magna, elementum vestibulum arcu</span>
+            </header>
+            <div class="row">
+                <div class="3u">
+                    <a href="#" class="image"><img src="~/Content/solarize/images/placeholder.png" alt=""></a>
+                    <h3>Molly Millions</h3>
+                    <p>In posuere eleifend odio quisque semper augue wisi ligula.</p>
+                </div>
+                <div class="3u">
+                    <a href="#" class="image"><img src="~/Content/solarize/images/placeholder.png" alt=""></a>
+                    <h3>Henry Dorsett Case</h3>
+                    <p>In posuere eleifend odio quisque semper augue wisi ligula.</p>
+                </div>
+                <div class="3u">
+                    <a href="#" class="image"><img src="~/Content/solarize/images/placeholder.png" alt=""></a>
+                    <h3>Willis Corto</h3>
+                    <p>In posuere eleifend odio quisque semper augue wisi ligula.</p>
+                </div>
+                <div class="3u">
+                    <a href="#" class="image"><img src="~/Content/solarize/images/placeholder.png" alt=""></a>
+                    <h3>Linda Lee</h3>
+                    <p>In posuere eleifend odio quisque semper augue wisi ligula.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    @Html.Partial("_Footer")
+
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - LightTour</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="container body-content">
+            @Html.Partial("_Header")
+            @Html.Partial("_Navigation")
+            <div class="row">
+                @RenderBody()
+            </div>
+            <hr />
+
+        </div>
+
+
+    </body>
+    </html>*@
