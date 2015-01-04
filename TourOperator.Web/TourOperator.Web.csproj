@@ -690,6 +690,7 @@
     <Content Include="Views\Country\Details.cshtml" />
     <Content Include="Views\TypeOfFood\Details.cshtml" />
     <Content Include="Views\Hotel\Details.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
