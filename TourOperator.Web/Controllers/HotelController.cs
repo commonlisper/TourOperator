@@ -6,13 +6,13 @@ using System.Web.Mvc;
 using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 
-namespace TourOperator.Web.Models.ViewModels
+namespace TourOperator.Web.Controllers
 {
     public class HotelController : Controller
     {
         private readonly IUnitOfWork _unitOfWork = new UnitOfWork(new DomainDbContext());
 
-        public ActionResult Details(Guid id)
+        public ActionResult Details(Guid id)    
         {
             return View(_unitOfWork.HotelRepository.Find(id));
         }

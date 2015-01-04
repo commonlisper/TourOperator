@@ -1,6 +1,8 @@
 ﻿@model TourOperator.Web.Models.ViewModels.TinyMceViewModel
 
 <script>
-    CKEDITOR.replace("@Model.Id");
+    CKEDITOR.replace("@Model.Id", {
+        height: 500
+    });   
 </script>
 

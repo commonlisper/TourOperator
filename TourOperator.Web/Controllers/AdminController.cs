@@ -7,6 +7,7 @@ using System.Management.Instrumentation;
 using System.Runtime;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using TourOperator.Domain.Data.DomainModel;
 using TourOperator.Domain.Data.Entities;
 using TourOperator.Domain.DataAccessLayer;
@@ -363,10 +364,14 @@ namespace TourOperator.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                hotelViewModel.Hotel = _unitOfWork.HotelRepository.Find(hotelViewModel.Hotel.Id);
-                hotelViewModel.Hotel.TypeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
+                Hotel hotel = _unitOfWork.HotelRepository.Find(hotelViewModel.Hotel.Id);
 
-                _unitOfWork.HotelRepository.Update(hotelViewModel.Hotel);
+                hotel.Name = hotelViewModel.Hotel.Name;
+                hotel.Category = hotelViewModel.Hotel.Category;
+                hotel.Description = hotelViewModel.Hotel.Description;
+                hotel.TypeOfFood = _unitOfWork.TypeOfFoodRepository.Find(hotelViewModel.SelectedTypeOfFoodId);
+
+                _unitOfWork.HotelRepository.Update(hotel);
                 _unitOfWork.Save();
 
                 return RedirectToAction("Hotels");

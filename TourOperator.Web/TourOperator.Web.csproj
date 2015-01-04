@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TypeOfFoodController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,7 +180,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\CountryDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\HealthResortViewModel.cs" />
-    <Compile Include="Models\ViewModels\HotelController.cs" />
     <Compile Include="Models\ViewModels\HotelViewModel.cs" />
     <Compile Include="Models\ViewModels\TourViewModel.cs" />
     <Compile Include="Models\ViewModels\TinyMceViewModel.cs" />
@@ -681,7 +681,7 @@
     <Content Include="Views\Admin\EditHotel.cshtml" />
     <Content Include="Views\Admin\TypeOfFoods.cshtml" />
     <Content Include="Views\Admin\AddTypeOfFood.cshtml" />
-    <Content Include="Views\Shared\_TinyMCE.cshtml" />
+    <Content Include="Views\Shared\_CKEditor.cshtml" />
     <Content Include="Views\Admin\EditTypeOfFood.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
