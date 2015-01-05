@@ -16,8 +16,8 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
         public HotelConfiguration()
         {
             Property(h => h.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(h => h.Name).IsRequired().HasMaxLength(200);            
-            Property(h => h.Description).IsOptional().HasColumnType("varchar(max)");
+            Property(h => h.Name).IsRequired().HasMaxLength(200).HasColumnType("nvarchar");            
+            Property(h => h.Description).IsOptional().HasColumnType("nvarchar(max)");
             Property(h => h.TimestampBytes).IsConcurrencyToken(true);
         }
     }

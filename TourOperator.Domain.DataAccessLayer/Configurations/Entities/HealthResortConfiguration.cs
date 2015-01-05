@@ -15,8 +15,8 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
         public HealthResortConfiguration()
         {
             Property(hr => hr.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(hr => hr.Name).IsRequired().HasMaxLength(200);
-            Property(hr => hr.Description).IsOptional().HasColumnType("varchar(max)");
+            Property(hr => hr.Name).IsRequired().HasMaxLength(200).HasColumnType("nvarchar");
+            Property(hr => hr.Description).IsOptional().HasColumnType("nvarchar(max)");
             Property(hr => hr.TimestampBytes).IsConcurrencyToken(true);
         }
     }

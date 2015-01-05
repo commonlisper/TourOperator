@@ -15,7 +15,7 @@ namespace TourOperator.Domain.DataAccessLayer.Configurations.Entities
         public CountryConfiguration()
         {
             Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(c => c.Name).IsRequired().HasMaxLength(200);
+            Property(c => c.Name).IsRequired().HasMaxLength(200).HasColumnType("nvarchar");
             Property(c => c.TimestampBytes).IsConcurrencyToken(true);
         }
     }
