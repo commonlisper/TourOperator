@@ -252,6 +252,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\atosdo-001-site1.myasp.net.pubxml" />
+    <None Include="Properties\PublishProfiles\myasp.net.pubxml" />
     <None Include="Properties\PublishProfiles\Somee.com.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
