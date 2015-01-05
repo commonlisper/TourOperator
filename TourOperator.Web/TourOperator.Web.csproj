@@ -699,7 +699,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TourOperator.Domain.DataAccessLayer\TourOperator.Domain.DataAccessLayer.csproj">
