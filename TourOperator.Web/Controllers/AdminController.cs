@@ -14,7 +14,9 @@ using TourOperator.Domain.DataAccessLayer;
 using TourOperator.Domain.DataAccessLayer.Abstract;
 using TourOperator.Domain.DataAccessLayer.Repositories;
 using TourOperator.Web.Models.ViewModels;
+using TourOperator.Web.Validation;
 using WebGrease.Css.Extensions;
+using ModelValidator = TourOperator.Web.Validation.ModelValidator;
 
 namespace TourOperator.Web.Controllers
 {
@@ -44,7 +46,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddCountry(Country newCountry)
         {
-            Country.Validate(newCountry, ModelState);
+            ModelValidator.ValidateCountry(newCountry, ModelState);
 
             if (_unitOfWork.CountryRepository.Get(c => c.Name == newCountry.Name).Any())
             {
@@ -71,7 +73,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCountry(Country updatedCoutry)
         {
-            Country.Validate(updatedCoutry, ModelState);
+            ModelValidator.ValidateCountry(updatedCoutry, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -137,7 +139,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddTour(TourViewModel tourViewModel)
         {
-            Tour.Validate(tourViewModel.Tour, ModelState);
+            ModelValidator.ValidateTour(tourViewModel.Tour, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -186,7 +188,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditTour(TourViewModel tourViewModel)
         {
-            Tour.Validate(tourViewModel.Tour, ModelState);
+            ModelValidator.ValidateTour(tourViewModel.Tour, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -235,7 +237,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddHealthResort(HealthResort newHealthResort)
         {
-            HealthResort.Validate(newHealthResort, ModelState);
+            ModelValidator.ValidateHealthResort(newHealthResort, ModelState);
 
             if (_unitOfWork.HealthResortRepository.Get(hr => hr.Name == newHealthResort.Name).Any())
             {
@@ -262,7 +264,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditHealthResort(HealthResort healthResortToUpdate)
         {
-            HealthResort.Validate(healthResortToUpdate, ModelState);
+            ModelValidator.ValidateHealthResort(healthResortToUpdate, ModelState);
 
             if (_unitOfWork.HealthResortRepository.Get(hr => hr.Name == healthResortToUpdate.Name).Any())
             {
@@ -325,7 +327,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddHotel(HotelViewModel hotelViewModel)
         {
-            Hotel.Validate(hotelViewModel.Hotel, ModelState);
+            ModelValidator.ValidateHotel(hotelViewModel.Hotel, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -360,7 +362,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditHotel(HotelViewModel hotelViewModel)
         {
-            Hotel.Validate(hotelViewModel.Hotel, ModelState);
+            ModelValidator.ValidateHotel(hotelViewModel.Hotel, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -418,7 +420,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddTypeOfFood(TypeOfFood newTypeOfFood)
         {
-            TypeOfFood.Validate(newTypeOfFood, ModelState);
+            ModelValidator.ValidateTypeOfFood(newTypeOfFood, ModelState);
 
             if (!ModelState.IsValid) return View(newTypeOfFood);
 
@@ -437,7 +439,7 @@ namespace TourOperator.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditTypeOfFood(TypeOfFood typeOfFoodToUpdate)
         {
-            TypeOfFood.Validate(typeOfFoodToUpdate, ModelState);
+            ModelValidator.ValidateTypeOfFood(typeOfFoodToUpdate, ModelState);
 
             if (!ModelState.IsValid) return View(typeOfFoodToUpdate);
 

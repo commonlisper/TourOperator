@@ -28,18 +28,5 @@ namespace TourOperator.Domain.Data.Entities
             [Display(Name = "Описание отеля")]
             public string Description { get; set; }
         }
-
-        public static void Validate(Hotel hotelToValidate, ModelStateDictionary modelState)
-        {
-            if (String.IsNullOrEmpty(hotelToValidate.Name))
-            {
-                modelState.AddModelError("Name", "Поле 'Название отеля' не задано");
-            }
-
-            if (hotelToValidate.Name.Length <= 2)
-            {
-                modelState.AddModelError("Name", "Поле 'Название отеля' требует более 2х символов");
-            }
-        }
     }    
 }

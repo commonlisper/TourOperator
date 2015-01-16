@@ -21,20 +21,7 @@ namespace TourOperator.Domain.Data.Entities
             [AllowHtml]
             [Display(Name = "Описание курорта")]
             public string Description { get; set; }
-        }
-
-        public static void Validate(HealthResort healthResortToValidate, ModelStateDictionary modelState)
-        {
-            if (String.IsNullOrEmpty(healthResortToValidate.Name))
-            {
-                modelState.AddModelError("Name", "Поле 'Название курорта' необходимо");
-            }
-
-            if (healthResortToValidate.Name.Length <= 2)
-            {
-                modelState.AddModelError("Name", "Поле 'Название курорта' требует более 2х символов");
-            }            
-        }
+        }       
     }
 
 }

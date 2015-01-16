@@ -22,23 +22,5 @@ namespace TourOperator.Domain.Data.Entities
             [Range(1, Int32.MaxValue, ErrorMessage = "Значение поля 'Количество ночей' вышло за границы")]
             public int Nights { get; set; }
         }
-
-        public static void Validate(Tour tourToValidate, ModelStateDictionary modelState)
-        {
-            if (tourToValidate.Price < 0)
-            {
-                modelState.AddModelError("Price", "Поле 'Стоимость тура' не может быть меньше ноля");
-            }
-
-            if (tourToValidate.Nights == 0)
-            {
-                modelState.AddModelError("Nights", "Поле 'Количество ночей' не может быть нулевым");
-            }
-
-            if (tourToValidate.Nights < 0)
-            {
-                modelState.AddModelError("Nights", "Поле 'Количество ночей' не может быть меньше ноля");
-            }
-        }
     }
 }
